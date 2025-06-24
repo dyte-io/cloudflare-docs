@@ -8,7 +8,7 @@ head:
     content: Overview
 ---
 
-import { Description, LinkButton } from "~/components";
+import { Description, LinkButton, CardGrid, LinkCard } from "~/components";
 
 <Description>
 
@@ -16,17 +16,26 @@ import { Description, LinkButton } from "~/components";
 
 Integrate programmable, and easily customizable live video and voice into your web, mobile, and desktop applications with just a few lines of code.
 
-### Live Video Calls
-
-Enable live video communication within your application using WebRTC. Perfect for education, telemedicine, social networks and gaming. [More](/realtimekit/guides/live-video/intro-video-conf)
-
-### Voice Calls
-
-Incorporate high-quality real-time audio into your application using WebRTC. Build voice calls, audio conferences, voice chats in games and more. [More](/realtimekit/guides/voice-conf/intro-voice-conf)
-
-### Interactive Live Streaming
-
-Integrate highly scalable live video broadcasting capabilities into your app using HLS, ideal for apps that involve streaming webinars, sports or live events. [More](/realtimekit/guides/livestream/livestream-overview)
+<CardGrid>
+	<LinkCard
+		href="/guides/live-video/intro-video-conf"
+		title="Live Video Calls"
+		description="Enable live video communication within your application using WebRTC. Perfect for education, telemedicine, social networks and gaming"
+		icon="video"
+	/>
+	<LinkCard
+		href="/guides/voice-conf/intro-voice-conf"
+		title="Voice Calls"
+		description="Incorporate high-quality real-time audio into your application using WebRTC. Build voice calls, audio conferences, voice chats in games and more"
+		icon="mic"
+	/>
+	<LinkCard
+		href="/guides/livestream/livestream-overview"
+		title="Interactive Live Streaming"
+		description="Integrate highly scalable live video broadcasting capabilities into your app using HLS, ideal for apps that involve streaming webinars, sports or live events"
+		icon="live"
+	/>
+</CardGrid>
 
 <LinkButton variant="primary" href="/realtime/realtimekit/guides/">
 	Guides
