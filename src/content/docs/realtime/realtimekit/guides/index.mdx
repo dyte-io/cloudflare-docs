@@ -8,10 +8,68 @@ head:
     content: Overview
 ---
 
-import { Description, LinkButton } from "~/components";
+import ProductSection from "src/content/docs/realtime/realtimekit/partials/_product-section.mdx";
+import {
+	CardGrid,
+	Card,
+	LinkCard,
+	LinkTitleCard,
+} from "@astrojs/starlight/components";
 
-<Description>
+<ProductSection></ProductSection>
 
-</Description>
+## Capabilities
 
-TBD
+Learn how to use key features of RealtimeKit, such as recording, breakout rooms, webinars, and more.
+
+<CardGrid>
+	<LinkCard
+		href="/guides/capabilities/recording/recording-overview"
+		title="Recording"
+		description="Understand RealtimeKit's recording capabilities and record audio, video, whiteboard and other custom elements"
+		icon="record"
+	/>
+	<LinkCard
+		href="/guides/capabilities/webinar/intro-webinar"
+		title="Webinar"
+		description="Leverage RealtimeKit's Webinar feature for one-to-many events with larger audiences."
+		icon="webinar"
+	/>
+	<LinkCard
+		href="/guides/capabilities/webhooks/webhooks-overview"
+		title="Webhooks & Events"
+		description="Utilize webhooks to push real-time updates to your server."
+		icon="webhooks"
+	/>
+	<LinkCard
+		href="/guides/capabilities/breakoutroom/introduction-breakout-rooms"
+		title="Breakout Rooms"
+		description="Facilitate focused discussions and collaboration with breakout rooms."
+		icon="breakout-rooms"
+	/>
+	<LinkCard
+		href="/guides/capabilities/misc/embed"
+		title="No Code Integration"
+		description="Integrate RealtimeKit into your project using an iFrame, eliminating the need for SDKs."
+		icon="no-code"
+	/>
+	<LinkCard
+		href="/guides/capabilities/chat/export-chat-dump"
+		title="Export chat"
+		description="Retrieve all chat messages of a RealtimeKit meeting through the REST API"
+		icon="chat"
+	/>
+</CardGrid>
+
+## REST APIs
+
+Learn the basics of working with RealtimeKit's REST APIs.
+
+<CardGrid>
+	<LinkCard
+		href="/guides/rest-apis/quickstart"
+		title="REST APIs"
+		description="Understand how our REST APIs work and how to get started with them"
+		icon="rest-api"
+	/>
+</CardGrid>
