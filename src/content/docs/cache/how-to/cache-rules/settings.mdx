@@ -34,7 +34,7 @@ If you select the [Edit expression](/ruleset-engine/rules-language/expressions/e
 
 :::note
 
-The fields mentioned above support all types of purge. However, the [remaining available fields](/ruleset-engine/rules-language/fields/reference/) support purge by tags, prefix (URL), hostname, and everything but are not compatible with [single file purge](/cache/how-to/purge-cache/purge-by-single-file/).
+[Single file purge](/cache/how-to/purge-cache/purge-by-single-file/) is not compatible if you add other [fields](/ruleset-engine/rules-language/fields/reference/) than those listed, such as `ip.*` fields.
 
 :::
 
@@ -69,6 +69,10 @@ In **Cache eligibility**, you have the option to select **Bypass cache** if you 
 ### Bypass cache
 
 When creating a cache rule, you have the option to select **Bypass cache** if you want matching incoming requests to not be cached. Alternatively, you can use [Development Mode](/cache/reference/development-mode/), if you want to bypass cache for shorter periods.
+
+:::note
+When using Custom Cache Rules with a Bypass setting, the response header may return [DYNAMIC](/cache/concepts/cache-responses/#dynamic) rather than explicitly indicating a bypass. This occurs because the rule makes the content ineligible for caching, even if the origin response is otherwise cacheable.
+:::
 
 ### Eligible for cache settings
 

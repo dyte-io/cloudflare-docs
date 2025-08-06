@@ -377,7 +377,7 @@ When `Enabled`, the operating system will register WARP's [local interface IP](#
 
 If you use on-premise DNS infrastructure (such as Active Directory), we recommend turning this setting on for remote [device profiles](/cloudflare-one/connections/connect-devices/warp/configure-warp/device-profiles/) and turning it off for [managed network](/cloudflare-one/connections/connect-devices/warp/configure-warp/managed-networks/) device profiles. In this configuration, remote devices will register their WARP interface IP, while on-premise devices will only register their local DHCP address. This allows the on-premise DNS server to resolve device hostnames no matter where the device is located.
 
-### SCCM VPN boundary support <Badge text="Beta" variant="caution"/>
+### SCCM VPN boundary support
 
 <Details header="Feature availability">
 
@@ -403,8 +403,6 @@ Microsoft's [System Center Configuration Manager](https://learn.microsoft.com/en
 - `Disabled`: (default) WARP network interface description is `Cloudflare WARP Interface Tunnel`.
 
 - `Enabled`: WARP network interface description is `(SCCM) Cloudflare WARP Interface Tunnel` for devices which have the [SCCM client](https://learn.microsoft.com/en-us/intune/configmgr/core/clients/deploy/deploy-clients-to-windows-computers) installed. Devices without the SCCM client will still use the default `Cloudflare WARP Interface Tunnel` description. WARP checks if the SCCM client is installed by looking for the SMS Agent Host (`ccmexec.exe`) Windows service.
-
-After setting the network interface description, WARP will restart the SMS Agent Host (`ccmexec.exe`) so that changes can propagate to the SCCM server in a timely manner.
 
 #### Example SCCM configuration
 
