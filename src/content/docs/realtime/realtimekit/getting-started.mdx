@@ -6,13 +6,7 @@ sidebar:
 ---
 import { Tabs, TabItem, Steps, Render } from '~/components';
 
-:::note[Before you get started with RealtimeKit:]
-
-If you don't have a Cloudflare Account, [please create one](/fundamentals/account/create-account/).
-
-:::
-
-### Understanding the RealtimeKit SDK Model
+### Understanding the RealtimeKit SDK model
 
 Before we get started with RealtimeKit, let's understand the SDK model.
 
@@ -43,7 +37,7 @@ To put this model into practice, you’ll follow these steps:
 5. **Initialize the SDK** using the participant’s auth token.
 6. **Join the session as a peer**—enabling real-time interaction with others in the meeting.
 
-### Create Cloudflare API access Token with Realtime Permissions
+### Create a Cloudflare API token with Realtime permissions
 
 To integrate RealtimeKit in your application, you must have a Cloudflare API token with **Realtime** access permissions. To create an API token:
 
@@ -55,79 +49,78 @@ Alternatively, you can [create tokens programmatically via the API](/fundamental
 
 Make sure to select the Realtime product with Admin access.
 
-![Realtime permission token section](~/assets/images/realtime/realtimekit/permission-token-section.png).
+![Screenshot showing the Realtime permission token section in the Cloudflare dashboard](~/assets/images/realtime/realtimekit/permission-token-section.png)
 
-If done right, following CURL should give you the list of you existing apps with 200 status code. If you have no apps, it will return an empty array with 200 status code.
+If you run the following command and your setup is correct, you should receive a list of your existing Cloudflare RealtimeKit apps and a 200 status code. If you have no apps, the response will be an empty array with a 200 status code.
 
 ```bash
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/apps' \
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/apps' \
 --header 'Authorization: Bearer <api_token>'
 ```
 
-If the above API doesn't give you 200 status code, it means you don't have the right permissions or the API token is not valid.
+If you do not receive a 200 status code, check your permissions or verify that your API token is valid.
 
-You can also view and manage your apps directly in the [Cloudflare RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/realtimekit/kit).
+You can also view and manage your apps directly in the [Cloudflare RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit).
 
-### Create RealtimeKit App
+### Create a Cloudflare RealtimeKit app
 
 Once you have your API token ready, the next step is to create a RealtimeKit app.
-You can use our [API reference](/api/resources/realtime/realtimekit/) for details on creating an app, or use the following sample cURL command:
+You can use our [API reference](/api/resources/realtime/realtimekit/) for details on creating an app, or use the following sample request:
 
 ```bash
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/apps' \
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/apps' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <api_token>' \
 --data '{
-    "name": "My First RealtimeKit App"
+    "name": "My First Cloudflare RealtimeKit app"
 }'
 ```
 
 For more about apps and their role, see the [RealtimeKit Concepts guide](/realtime/realtimekit/concepts).
 
-### Sandbox vs Production App
+### Sandbox vs. production app
 
 It’s best practice to create separate apps for your production and staging environments. This helps you test changes safely without impacting your live environment.
 
 For example, you might name your staging app as `<company_name> - <product_name> - staging` and your production app as `<company_name> - <product_name> - production`.
 You are free to choose any app name that fits your workflow.
 
-### Create Meeting
+### Create a meeting
 
-After creating an app, you can create a new meeting.
-Refer to the [API reference](/api/resources/realtime/realtimekit/) for endpoint details.
+After creating your app, create a new meeting using the API:
 
 ```bash
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/<app_id>/meetings' \
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <api_token>' \
 --data '{
-    "title": "My First RealtimeKit Meeting",
+    "title": "My First Cloudflare RealtimeKit meeting"
 }'
 ```
 
-To verify your meeting, you can list all meetings for your app:
+To verify your meeting, list all meetings for your app:
 
 ```bash
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/<app_id>/meetings' \
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings' \
 --header 'Authorization: Bearer <api_token>'
 ```
 
 Be sure to keep the ID of your newly created meeting for the next steps.
 
-### Create a Preset for a Participant
+### Create a preset for a participant
 
 Before adding participants, you need to decide what permissions they should have.
 Presets define these permissions, and RealtimeKit provides some default presets to get you started.
 Learn more about presets in the [Concepts guide](/realtime/realtimekit/concepts#presets).
 
-To see existing presets, use:
+To see existing presets, run:
 
 ```bash
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/<app_id>/presets' \
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/presets' \
 --header 'Authorization: Bearer <api_token>'
 ```
 
-You can create new presets using the [API reference](/api/resources/realtime/realtimekit/) or via the [RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/realtimekit/kit).
+You can create new presets using the [API reference](/api/resources/realtime/realtimekit/) or via the [RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit).
 
 Keep the preset name handy for the next step.
 
@@ -137,13 +130,12 @@ Keep the preset name handy for the next step.
 This means you can define a role (such as "teacher" or "viewer") once and assign it to participants in any number of meetings, ensuring consistent permissions and experience. For example, the same `teacher` preset can be used for all classrooms, so you don’t have to redefine permissions every time you create a new meeting. This streamlines setup and helps maintain standardized roles across your organization.
 :::
 
-### Add Participant
+### Add a participant
 
-With your meeting and preset ready, you can now add a participant.
-Replace all placeholder values in the following cURL command with your actual data.
+With your meeting and preset ready, add a participant using the following command. Replace all placeholder values with your actual data:
 
 ```bash
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/<app_id>/meetings/<meeting_id>/participants' \
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings/<meeting_id>/participants' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer <api_token>' \
 --data '{
@@ -161,19 +153,19 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 The response will include an auth token, which is required for the participant to join the meeting.
 See the [API reference](/api/resources/realtime/realtimekit/) for more details on participant management.
 
-### Try the RealtimeKit Sample UI with Participant Auth Token
+### Try the sample UI with your participant auth token
 
-Now that you have the auth token, you can try out the default UI samples for different platforms. Choose your platform below:
+After you receive the auth token, try the default UI samples for your platform:
 
 <Tabs>
-<TabItem label="React">
+<TabItem label="Web Components">
 
-**Run the default-meeting-ui sample ([GitHub repo](https://github.com/dyte-io/react-samples/tree/main/default-meeting-ui))**
+**Run the default-meeting-ui sample ([GitHub repo](https://github.com/dyte-io/html-samples/tree/main/samples/default-meeting-ui))**
 
 1. Clone the sample:
    ```bash
-   git clone https://github.com/dyte-io/react-samples.git
-   cd react-samples/default-meeting-ui
+   git clone https://github.com/dyte-io/html-samples.git
+   cd html-samples/samples/default-meeting-ui
    ```
 2. Install dependencies:
    ```bash
@@ -185,7 +177,30 @@ Now that you have the auth token, you can try out the default UI samples for dif
    ```
 4. Open the app in your browser. To join the session, **append your auth token to the preview URL**:
    ```
-   http://localhost:3000/?authToken=<participant_auth_token>
+   http://localhost:5173/?authToken=<participant_auth_token>
+   ```
+   Replace `<participant_auth_token>` with the token you received from the Add Participant API.
+</TabItem>
+<TabItem label="React">
+
+**Run the default-meeting-ui sample ([GitHub repo](https://github.com/dyte-io/react-samples/tree/main/samples/default-meeting-ui))**
+
+1. Clone the sample:
+   ```bash
+   git clone https://github.com/dyte-io/react-samples.git
+   cd react-samples/samples/default-meeting-ui
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Open the app in your browser. To join the session, **append your auth token to the preview URL**:
+   ```
+   http://localhost:5173/?authToken=<participant_auth_token>
    ```
    Replace `<participant_auth_token>` with the token you received from the Add Participant API.
 </TabItem>
