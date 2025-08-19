@@ -13,11 +13,11 @@ Follow the instructions to obtain an auth token and try out the SDK in a running
 
 Before we get started with RealtimeKit, let's understand the SDK model.
 
-In RealtimeKit, the concepts of [**meeting**](/realtime/realtimekit/concepts#meeting) and [**participant**](/realtime/realtimekit/concepts#participant) serve as blueprints—these are database entries that define the structure and roles for real-time interactions. A meeting blueprint outlines the configuration for a collaborative space (such as a classroom, telehealth appointment, or webinar), while a participant blueprint defines the roles and permissions available within that space.
+In RealtimeKit, the concepts of [**meeting**](/realtime/realtimekit/concepts/#meeting) and [**participant**](/realtime/realtimekit/concepts/#participant) serve as blueprints—these are database entries that define the structure and roles for real-time interactions. A meeting blueprint outlines the configuration for a collaborative space (such as a classroom, telehealth appointment, or webinar), while a participant blueprint defines the roles and permissions available within that space.
 
 When it comes to real-time usage, these blueprints are instantiated as sessions and peers:
-- A [**session**](/realtime/realtimekit/concepts#session) is a live instance of a meeting, representing an active, real-time interaction.
-- A [**peer**](/realtime/realtimekit/concepts#peer) is a live instance of a participant—an actual user (such as a teacher, student, doctor, or patient) joining the session.
+- A [**session**](/realtime/realtimekit/concepts/#session) is a live instance of a meeting, representing an active, real-time interaction.
+- A [**peer**](/realtime/realtimekit/concepts/#peer) is a live instance of a participant—an actual user (such as a teacher, student, doctor, or patient) joining the session.
 
 > **Note:** In some contexts, the terms **session** and **meeting**, as well as **peer** and **participant**, are used interchangeably. This is because most people are more familiar with the terms "meeting" and "participant." However, in RealtimeKit, using "session" and "peer" helps differentiate between live instances (sessions and peers) and their blueprints (meetings and participants), making it easier to track and manage them individually in the RealtimeKit dashboard.
 
@@ -79,7 +79,7 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 }'
 ```
 
-For more about apps and their role, see the [RealtimeKit Concepts guide](/realtime/realtimekit/concepts#app).
+For more about apps and their role, see the [RealtimeKit Concepts guide](/realtime/realtimekit/concepts/#app).
 
 ### Sandbox vs. production app
 
@@ -114,7 +114,7 @@ Be sure to keep the ID of your newly created meeting for the next steps.
 
 Before adding participants, you need to decide what permissions they should have.
 Presets define these permissions, and RealtimeKit provides some default presets to get you started.
-Learn more about presets in the [Concepts guide](/realtime/realtimekit/concepts#preset).
+Learn more about presets in the [Concepts guide](/realtime/realtimekit/concepts/#preset).
 
 To see existing presets, run:
 
