@@ -6,6 +6,9 @@ sidebar:
 ---
 import { Tabs, TabItem, Steps, Render } from '~/components';
 
+This page guides you through testing the Cloudflare RealtimeKit sample UI, so you can quickly experience joining a live session as a peer.
+Follow the instructions to obtain an auth token and try out the SDK in a running sample—no full app setup required.
+
 ### Understanding the RealtimeKit SDK model
 
 Before we get started with RealtimeKit, let's understand the SDK model.
@@ -76,7 +79,7 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 }'
 ```
 
-For more about apps and their role, see the [RealtimeKit Concepts guide](/realtime/realtimekit/concepts).
+For more about apps and their role, see the [RealtimeKit Concepts guide](/realtime/realtimekit/concepts#app).
 
 ### Sandbox vs. production app
 
@@ -111,7 +114,7 @@ Be sure to keep the ID of your newly created meeting for the next steps.
 
 Before adding participants, you need to decide what permissions they should have.
 Presets define these permissions, and RealtimeKit provides some default presets to get you started.
-Learn more about presets in the [Concepts guide](/realtime/realtimekit/concepts#presets).
+Learn more about presets in the [Concepts guide](/realtime/realtimekit/concepts#preset).
 
 To see existing presets, run:
 
