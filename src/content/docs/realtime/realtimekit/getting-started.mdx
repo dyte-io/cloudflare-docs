@@ -71,7 +71,7 @@ You can also view and manage your apps directly in the [Cloudflare RealtimeKit d
 ### Create RealtimeKit App
 
 Once you have your API token ready, the next step is to create a RealtimeKit app.
-You can use our [API reference](/api/resources/realtimekit) for details on creating an app, or use the following sample cURL command:
+You can use our [API reference](/api/resources/realtime/realtimekit/) for details on creating an app, or use the following sample cURL command:
 
 ```bash
 curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/apps' \
@@ -84,7 +84,7 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 
 For more about apps and their role, see the [RealtimeKit Concepts guide](/realtime/realtimekit/concepts).
 
-#### Sandbox vs Production App
+### Sandbox vs Production App
 
 It’s best practice to create separate apps for your production and staging environments. This helps you test changes safely without impacting your live environment.
 
@@ -94,7 +94,7 @@ You are free to choose any app name that fits your workflow.
 ### Create Meeting
 
 After creating an app, you can create a new meeting.
-Refer to the [API reference](/api/resources/realtimekit) for endpoint details.
+Refer to the [API reference](/api/resources/realtime/realtimekit/) for endpoint details.
 
 ```bash
 curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/realtimekit/kit/<app_id>/meetings' \
@@ -127,7 +127,7 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 --header 'Authorization: Bearer <api_token>'
 ```
 
-You can create new presets using the [API reference](/api/resources/realtimekit) or via the [RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/realtimekit/kit).
+You can create new presets using the [API reference](/api/resources/realtime/realtimekit/) or via the [RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/realtimekit/kit).
 
 Keep the preset name handy for the next step.
 
@@ -159,7 +159,7 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 - `custom_participant_id`: A unique identifier for the participant within this meeting. If you call the Add Participant API again with the same `custom_participant_id` for the same meeting, RealtimeKit will not create a duplicate participant but will instead return the existing participant's token. This can be any unique string, such as a UUID. **Do not use email addresses or personally identifiable information (PII)** here to proactively avoid sharing sensitive details. This UUID will be available in SDK for you to use later on.
 
 The response will include an auth token, which is required for the participant to join the meeting.
-See the [API reference](/api/resources/realtimekit) for more details on participant management.
+See the [API reference](/api/resources/realtime/realtimekit/) for more details on participant management.
 
 ### Try the RealtimeKit Sample UI with Participant Auth Token
 
