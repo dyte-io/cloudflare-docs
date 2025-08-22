@@ -299,13 +299,13 @@ to just
 <rtk-header/>
 ```
 
-`rtk-header` is the header component that shows the session name and the session controls.
-`rtk-grid` is the grid component that shows the participants in the session.
-`rtk-controlbar` is the controlbar component that shows the controls, such as camera, microphone, etc.
-`rtk-notifications` is the notifications component that shows the notifications for the session.
-`rtk-participants-audio` is the audio component that helps you listen other participants in the session.
-`rtk-dialog-manager` is the dialog-manager component that shows the dialogs for the session.
-`rtk-sidebar` is the sidebar component that shows the sidebar, in which chat, polls content showup.
+`rtk-header` is the header component that shows the session name and the session controls.<br/>
+`rtk-grid` is the grid component that shows the participants in the session.<br/>
+`rtk-controlbar` is the controlbar component that shows the controls, such as camera, microphone, etc.<br/>
+`rtk-notifications` is the notifications component that shows the notifications for the session.<br/>
+`rtk-participants-audio` is the audio component that helps you listen other participants in the session.<br/>
+`rtk-dialog-manager` is the dialog-manager component that shows the dialogs for the session.<br/>
+`rtk-sidebar` is the sidebar component that shows the sidebar, in which chat, polls content shows up.<br/>
 
 You can split all of these components further. To see more such components, refer to our [components library](https://docs.realtime.cloudflare.com/react-ui-kit/components) or [ui-kit repo](https://github.com/dyte-io/realtimekit-ui).
 
@@ -362,6 +362,7 @@ function App() {
             <RtkUIProvider meeting={meeting}>
                 <RtkHeader/>
                 <RtkGrid/>
+                <RtkSidebar/>
                 <RtkControlbar/>
                 <RtkNotifications/>
                 <RtkParticipantsAudio/>
@@ -388,12 +389,13 @@ to just
 <RtkHeader/>
 ```
 
-`RtkHeader` is the header component that shows the session name and the session controls.
-`RtkGrid` is the grid component that shows the participants in the session.
-`RtkControlbar` is the controlbar component that shows the controls for the session.
-`RtkNotifications` is the notifications component that shows the notifications for the session.
-`RtkParticipantsAudio` is the audio component that helps you listen other participants in the session.
-`RtkDialogManager` is the dialog-manager component that shows the dialogs for the session.
+`RtkHeader` is the header component that shows the session name and the session controls.<br/>
+`RtkGrid` is the grid component that shows the participants in the session.<br/>
+`RtkControlbar` is the controlbar component that shows the controls for the session.<br/>
+`RtkNotifications` is the notifications component that shows the notifications for the session.<br/>
+`RtkParticipantsAudio` is the audio component that helps you listen other participants in the session.<br/>
+`RtkDialogManager` is the dialog-manager component that shows the dialogs for the session.<br/>
+`RtkSidebar` is the sidebar component that shows the sidebar, in which chat, polls content shows up.<br/>
 
 You can split all of these components further. To see more such components, refer to our [components library](https://docs.realtime.cloudflare.com/react-ui-kit/components) and [ui-kit repo](https://github.com/dyte-io/realtimekit-ui).
 
@@ -414,9 +416,9 @@ To achieve this, you need to conditionally render the setup screen, waiting scre
 <Tabs syncKey="realtimeKitFrameworkTabs">
 <TabItem label="Web Components">
 
-`rtk-setup-screen` component is the setup screen component that shows the setup screen for the peer.
-`rtk-waiting-screen` component is the waiting screen component that shows the waiting screen for the peer.
-`rtk-ended-screen` component is the ended screen component that shows the ended screen for the peer.
+`rtk-setup-screen` component is the setup screen component that shows the setup screen for the peer.<br/>
+`rtk-waiting-screen` component is the waiting screen component that shows the waiting screen for the peer.<br/>
+`rtk-ended-screen` component is the ended screen component that shows the ended screen for the peer.<br/>
 
 To take away peer lifecycle complexities, we are managing the lifecycle internally.
 
@@ -474,9 +476,9 @@ Remember to comment out `meeting.join();` in your code. The `rtk-setup-screen` c
 </TabItem>
 <TabItem label="React">
 
-`RtkSetupScreen` component is the setup screen component that shows the setup screen for the peer.
-`RtkWaitingScreen` component is the waiting screen component that shows the waiting screen for the peer.
-`RtkEndedScreen` component is the ended screen component that shows the ended screen for the peer.
+`RtkSetupScreen` component is the setup screen component that shows the setup screen for the peer.<br/>
+`RtkWaitingScreen` component is the waiting screen component that shows the waiting screen for the peer.<br/>
+`RtkEndedScreen` component is the ended screen component that shows the ended screen for the peer.<br/>
 
 To take away peer lifecycle complexities, we are managing the lifecycle internally. You can plug into the lifecycle states by listing to `rtkStateUpdate` events.
 
