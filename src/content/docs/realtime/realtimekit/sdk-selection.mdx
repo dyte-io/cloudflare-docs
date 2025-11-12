@@ -1,0 +1,208 @@
+---
+pcx_content_type: navigation
+title: Select SDK(s)
+slug: realtime/realtimekit/sdk-selection
+sidebar:
+  order: 5
+---
+
+:::note
+If you haven't already, we recommend trying out our [demo app](https://demo.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
+:::
+
+### SDK Types
+
+Cloudflare Realtime provides two ways to build real-time media applications: use **Core SDK only** to build custom UI, or use **Core SDK + UI Kit** for prebuilt easy-to-use components. Understanding the relationship between these SDKs will help you make the right choice.
+
+**Core SDK** is the foundation that provides all the WebRTC APIs, media management, and networking capabilities. It gives you programmatic access to:
+- Audio and video streams
+- Participant lists (Waitlisted, Joined, Active on current page)
+- Screen sharing
+- Recording and streaming
+- Meeting stage and events
+- Permissions and roles
+
+**UI Kit** is built on top of Core SDK. It internally uses Core SDK APIs to provide ready-to-use UI components, so you do not have to worry about which Core SDK methods to call or how to manage UI state. All that will be handled by UI Kit.
+
+### SDK Choices
+
+You have two options:
+
+1. **Core SDK only**: Use Core SDK APIs directly and build your own custom UI. On average, it takes 2-3 weeks to build a custom UI from scratch with just the Core SDK for a basic meeting experience.
+2. **Core SDK + UI Kit**: Use UI Kit components (which internally use Core SDK) for faster development. On average, it takes less than a week to build a custom UI with UI Kit for a basic meeting experience.
+
+:::note
+UI Kit always includes Core SDK. You cannot use UI Kit without Core SDK, as UI Kit is a layer built on top of Core SDK.
+:::
+
+### Quick Decision Guide
+
+Choose **Core SDK only** if you:
+- Need the smallest possible bundle size.
+- Want full control and will build the UI from scratch.
+- Prefer managing all meeting actions, flows, and UI logic yourself.
+- Only need specific APIs to control media, recording, chat, without any prebuilt UI.
+
+Choose **Core SDK + UI Kit** if you:
+- Want everything that Core SDK provides plus prebuilt UI components.
+- Want to get started quickly with pluggable prebuilt components.
+- Need a complete meeting experience that you can customize and integrate in your existing app or website with minimal effort.
+- Prefer automatic handling of meeting state, dialogs, and permissions by UI Kit.
+- Want to mix prebuilt components with custom ones.
+
+### Platform availability
+
+Both SDKs support multiple platforms and frameworks:
+
+**Core SDK available for:**
+- Web: JavaScript/TypeScript (Angular, Vue, Svelte, vanilla JS), React
+- Mobile: React Native, Flutter, Android (Kotlin/Java), iOS (Swift/Objective-C)
+
+**UI Kit available for:**
+- Web: React, Angular, Web Components (can be used with any web framework)
+- Mobile: React Native, Flutter, Android (Kotlin/Java), iOS (Swift/Objective-C)
+
+### Detailed comparison
+
+#### Core SDK only
+
+With this approach, you use Core SDK APIs directly and build your own UI.
+
+Core SDK provides:
+- Low-level access to media and networking primitives.
+- Small bundle size and high flexibility.
+- Direct access to WebRTC media streams and connection management.
+
+**Core capabilities include:**
+- **Media management**: Audio, video, screen sharing streams
+- **Participant management**: Join, leave, mute, unmute
+- **Connection handling**: Network state, reconnection logic
+- **Events and listeners**: Real-time meeting state updates
+- **Permissions and roles**: Preset-based access control
+- **Recording and streaming**: RTMP, HLS integration
+- **Plugins**: Screen share, whiteboard, file sharing APIs
+
+**Core SDK does not provide:**
+- UI components (Chat, notifications, recording indicators, etc.). You would have to build the entire UI from scratch.
+- Meeting layouts & participant pagination UI.
+- Plugins (UI Kit contains the visual aspect of plugins). Requires additional implementation.
+
+Consider Core SDK only when you need:
+- Complete control over every UI element and workflow.
+- Minimal UI (for example, only video tiles, screen share, or audio-only).
+- Tight performance and bundle size constraints.
+- Deep integration with existing design systems or component libraries.
+- Specialized rendering.
+
+:::note
+If you are building custom UI with Core SDK only, you can reference our open source [Web SDKs UI Kit repository](https://github.com/cloudflare/realtimekit-ui) for implementation examples to speed up your development.
+:::
+
+#### Core SDK + UI Kit
+
+With this approach, you use UI Kit components that internally handle all Core SDK API calls.
+
+- Comprehensive design library built on top of Core SDK.
+- UI Kit components internally use Core SDK APIs to manage meeting state and media.
+- You still have access to Core SDK APIs when needed for advanced customization.
+
+Choose Core SDK + UI Kit when you need:
+- Fast time to market with production-ready meeting UI.
+- Professional, accessible UI without building from scratch.
+- Customizable components that handle meeting state automatically.
+- Ability to extend functionality with add-ons (custom buttons, host controls, hand raise).
+- Progressive customization.
+- Support for theming and branding while maintaining functionality.
+
+**What UI Kit provides:**
+
+UI Kit includes a comprehensive component library:
+- **Layout components**: Grid, Simple Grid, Spotlight Grid, Mixed Grid, Sidebar
+- **Participant components**: Participant Tile, Name Tag, Avatar, Participant Count, Participant Tile
+- **Control components**: Responsive Control Bar, Media toggles, Settings (Audio, Video)
+- **Communication**: Chat, Emoji Picker, Notification
+- **Utility components**: Dialog, Menu, Tooltip, Spinner, Recording Indicator
+- **Screen components**: Setup Screen, Meeting Screen, Idle Screen, Ended Screen
+
+Extensibility via add-ons:
+- Add custom buttons to the control bar
+- Host controls (camera, mic, chat permissions)
+- Hand raise functionality
+- Video backgrounds and filters
+- Custom participant menu items
+- Custom participant tab actions
+
+### Use cases and recommendations
+
+- Group call → **Core SDK + UI Kit** (prebuilt layouts, quick to ship; extend with components or add-ons as needed).
+- Webinar → **Core SDK + UI Kit** (presenter or audience roles, moderation, scalable patterns).
+- Livestream → **Core SDK + UI Kit** (broadcast-focused layouts; extend for streaming controls).
+- Audio call → **Core SDK only** (lightweight, audio-focused controls without video UI).
+- Interview platform → **Core SDK + UI Kit** (host and participant roles, easy to ship).
+- Classroom → **Core SDK + UI Kit** (participant grid, screen share; extend with education tooling).
+- Gaming → **Core SDK + UI Kit** or **Core SDK only** (custom overlays, low-latency visuals, specialized flows, UI Kit only if chat is needed).
+- Clubhouse or Twitter Space → **Core SDK only** (audio-first, custom roles).
+- Assessment (take home assignment) → **Core SDK only** (minimal UI, focused display and controls).
+- Breakout rooms → **Core SDK + UI Kit** (room management patterns; extend as needed).
+- On-call premise visits → **Core SDK only** (lightweight, minimal UI).
+- Telehealth → **Core SDK + UI Kit** (complete, professional UI; extend with domain-specific actions).
+
+:::note
+When using UI Kit, you still have access to all Core SDK APIs for advanced customization. UI Kit components handle the common use cases, but you can always drop down to Core SDK when needed.
+:::
+
+### Technical comparison
+
+| Feature | Core SDK only | Core SDK + UI Kit |
+|---------|----------|--------|
+| **What you get** | Core SDK APIs only | Core SDK + prebuilt UI components |
+| **Bundle size** | Minimal (media/network only) | Larger (includes Core SDK + UI components) |
+| **Time to ship** | Longer (build UI from scratch) | Faster (UI Kit handles Core SDK calls) |
+| **Customization** | Complete control, manual implementation | High customization via components and themes |
+| **State management** | Manual handling of Core SDK state | Automatic, UI Kit manages Core SDK state |
+| **UI flexibility** | Unlimited (build anything) | High (component library + add-ons) |
+| **Learning curve** | Steeper (learn Core SDK APIs directly) | Gentler (declarative components wrap Core SDK) |
+| **Maintenance** | More UI code to maintain | Less code, component updates included |
+| **Design system** | Integrate with any system | Theming system, or use individual components |
+| **Access to Core SDK** | Direct API access | Full Core SDK access + UI components |
+
+### How to decide
+
+Ask yourself these questions:
+
+1. **Are you fine with the standard meeting UI of [demo app](https://demo.realtime.cloudflare.com/meeting?demo=Default) or the [default sample](/realtime/realtimekit/getting-started/)?**
+   - Yes, with minor extensions → Start with Core SDK + UI Kit
+   - Yes, but need to rearrange component layout → Start with Core SDK + UI Kit
+   - Sort of, but only need select UI components → Start with Core SDK + UI Kit
+   - No, need fully custom design → Core SDK only
+
+2. **Is time to market critical?**
+   - Yes, need to ship quickly → Core SDK + UI Kit
+   - No, have time to build custom → Either (Core SDK + UI Kit still saves time)
+
+3. **Do you have an existing design system?**
+   - Yes, must match exactly → Core SDK only (or Core SDK + UI Kit with individual components)
+   - No, need a professional UI → Core SDK + UI Kit
+
+4. **Is bundle size a critical constraint?**
+   - Yes, every KB matters → Core SDK only
+   - No, normal constraints → Either
+
+5. **Do you need only specific features (for example, audio-only, screen share)?**
+   - Yes, minimal UI needed → Core SDK only
+   - No, need full meeting experience → Core SDK + UI Kit
+
+:::note
+If your answers are mixed, consider starting with Core SDK + UI Kit and using individual components. You can always remove UI Kit later and use Core SDK only if needed.
+:::
+
+### Migration path
+
+- **Core SDK + UI Kit to Core SDK only**: Remove UI Kit components and call Core SDK APIs directly for finer control or smaller bundles.
+- **Core SDK only to Core SDK + UI Kit**: Add UI Kit to your project and replace custom UI with prebuilt components to reduce maintenance.
+
+Since UI Kit is built on Core SDK, you always have access to the underlying Core SDK APIs regardless of which approach you choose. This makes migration straightforward as your requirements evolve.
+
+:::note
+Our guides cover implementation for both Core SDK and UI Kit, helping you understand the underlying APIs so you can customize either approach as needed.
+:::
