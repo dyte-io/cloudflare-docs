@@ -62,6 +62,28 @@ Both SDKs support multiple platforms and frameworks:
 - Web: React, Angular, Web Components (can be used with any web framework)
 - Mobile: React Native, Flutter, Android (Kotlin/Java), iOS (Swift/Objective-C)
 
+Here’s a quick reference for the available SDKs, with links to their respective packages:
+
+| Framework/Library | Core SDK | UI Kit |
+| --- | --- | --- |
+| Web Components | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-ui) |
+| Angular | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-angular-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui) |
+| React | [@cloudflare/realtimekit-react](https://www.npmjs.com/package/@cloudflare/realtimekit-react) | [@cloudflare/realtimekit-react-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui) |
+| React Native | [@cloudflare/realtimekit-react-native](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) |
+
+**Wrapper Packages**
+
+Some SDKs are "wrappers". They are built on top of the base SDKs to make integration easier in specific frameworks.
+
+For Web, the base Core SDK is `@cloudflare/realtimekit` and the base UI Kit is `@cloudflare/realtimekit-ui`. The UI Kit is based on [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and built using [Stencil](https://stenciljs.com/). You can learn more in our open source [UI Kit Repo](https://github.com/cloudflare/realtimekit-ui).
+
+- **React:**
+  - `@cloudflare/realtimekit-react` wraps the core SDK `@cloudflare/realtimekit` to provide React hooks.
+  - `@cloudflare/realtimekit-react-ui` wraps the UI Kit `@cloudflare/realtimekit-ui` to provide React components.
+- **Angular:**
+  - `@cloudflare/realtimekit-angular-ui` wraps the UI Kit `@cloudflare/realtimekit-ui` to provide Angular components. The Core SDK for Angular is `@cloudflare/realtimekit`.
+  - It is to be noted that the Angular currently uses `@cloudflare/realtimekit` as the Core SDK and doesn't have its own wrapper, unlike React.
+
 ### Detailed comparison
 
 #### Core SDK only
