@@ -5,3 +5,71 @@ slug: realtime/realtimekit/demo-app
 sidebar:
   order: 40
 ---
+import { LinkButton } from "~/components";
+
+<div style="text-align: center; margin-bottom: 2rem;">
+	<LinkButton
+		variant="secondary"
+		href="https://demo.realtime.cloudflare.com"
+		target="_blank"
+		style="background-color: #F48120; border-color: #F48120; color: white;"
+	>
+		RealtimeKit demo app
+	</LinkButton>
+</div>
+
+The [RealtimeKit Demo App](https://demo.realtime.cloudflare.com/) is a quick way to experience RealtimeKit's capabilities without any setup or configuration. You can instantly try out different meeting modes including livestreams, webinars, and group calls directly in your browser.
+
+:::caution[Not for Production Use]
+The demo app is **NOT intended for production use**. It is purely for testing and exploration purposes. Do not embed or link to this demo app in your production applications or client-facing websites.
+:::
+
+## What You Can Try
+
+The demo app allows you to:
+
+- **Create or join meetings** instantly without any authentication
+- **Test different meeting modes**:
+  - **Group Calls**: Standard video conferencing with multiple participants
+  - **Webinars**: One-to-many presentations with interactive features
+  - **Livestreams**: Broadcast to large audiences
+- **Explore UI Kit components** and their interactions
+- **Test new features** before integrating them into your own application
+
+## For Production Applications
+
+Instead of using the demo app, you should:
+
+### Use the Official Examples Repository
+
+The [RealtimeKit Web Examples](https://github.com/cloudflare/realtimekit-web-examples) repository contains production-ready code samples that you can:
+
+- **Clone and deploy** directly to your hosting environment
+- **Copy and customize** to match your specific requirements
+- **Use as reference** when building your own implementation
+
+### Example Projects Available
+
+The repository includes examples for:
+
+- React applications
+- Angular applications
+- Vanilla JavaScript/Web Components
+- Different meeting modes (group calls, webinars, livestreams)
+- Custom UI implementations
+- Advanced features integration
+
+Please refer to our [Getting Started](/realtime/realtimekit/getting-started/) guide for more information on how to run these examples.
+
+## Demo App Use Cases
+
+The demo app is ideal for:
+
+- **Quick feature testing** - Try out new RealtimeKit features before implementing them
+- **Proof of concept** - Show stakeholders what's possible with RealtimeKit
+- **Learning and exploration** - Understand how different components work together
+- **Debugging** - Compare behavior between your implementation and the reference demo
+
+:::note[Remember]
+Always refer to the [official examples repository](https://github.com/cloudflare/realtimekit-web-examples) when building production applications. The demo app is a sandbox environment that should not be relied upon for production use cases.
+:::
