@@ -170,6 +170,14 @@ await meeting.chat.sendTextMessage('Hello everyone!');
 
 // Send an image
 await meeting.chat.sendImageMessage(imageFile);
+
+// Listen to chat messages
+console.log('First message:', meeting.chat.messages[0]);
+
+meeting.chat.on('chatUpdate', ({ message, messages }) => {
+  console.log(`Received message ${message}`);
+  console.log(`All messages in chat: ${messages.join(', ')}`);
+});
 ```
 
 ### [`meeting.polls`](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) - Polls
