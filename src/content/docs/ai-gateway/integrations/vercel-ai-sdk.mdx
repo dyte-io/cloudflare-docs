@@ -43,7 +43,6 @@ export default {
 
 		const openai = createOpenAI({
 			apiKey: unifiedAuth,
-			baseURL: "https://api.openai.com/v1",
 		});
 
 		return Response.json({ configured: true });
@@ -84,7 +83,6 @@ export default {
 
 		const anthropic = createAnthropic({
 			apiKey: unifiedAuth,
-			baseURL: "https://api.anthropic.com",
 		});
 
 		return Response.json({ configured: true });
@@ -125,7 +123,6 @@ export default {
 
 		const google = createGoogleGenerativeAI({
 			apiKey: unifiedAuth,
-			baseURL: "https://generativelanguage.googleapis.com/v1beta",
 		});
 
 		return Response.json({ configured: true });

@@ -101,11 +101,6 @@ export default {
 		const response = await ai.models.generateContent({
 			model: "gemini-2.5-flash",
 			contents: "What is Cloudflare?",
-			config: {
-				httpOptions: {
-					baseUrl: "https://generativelanguage.googleapis.com",
-				},
-			},
 		});
 
 		return Response.json({ text: response.text });

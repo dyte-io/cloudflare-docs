@@ -89,7 +89,6 @@ export default {
 
 		const groq = new Groq({
 			apiKey: unifiedAuth,
-			baseURL: "https://api.groq.com/openai/v1",
 		});
 
 		const messages = [{ role: "user", content: "What is Cloudflare?" }];

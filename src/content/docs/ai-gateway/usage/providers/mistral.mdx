@@ -90,7 +90,6 @@ export default {
 
 		const client = new Mistral({
 			apiKey: unifiedAuth,
-			serverURL: "https://api.mistral.ai",
 		});
 
 		const response = await client.chat.create({
