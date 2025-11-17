@@ -3,6 +3,8 @@ title: Azure OpenAI
 pcx_content_type: get-started
 ---
 
+import { Tabs, TabItem } from "~/components";
+
 [Azure OpenAI](https://azure.microsoft.com/en-gb/products/ai-services/openai-service/) allows you apply natural language algorithms on your data.
 
 ## Endpoint
@@ -47,6 +49,9 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/azure-opena
 
 If you are using the `openai-node` library, you can set your endpoint like this:
 
+<Tabs syncKey="sdk">
+<TabItem label="Javascript" icon="seti:javascript">
+
 ```js title="JavaScript"
 import OpenAI from "openai";
 
@@ -65,3 +70,34 @@ const azure_openai = new OpenAI({
 	defaultHeaders: { "api-key": apiKey },
 });
 ```
+
+</TabItem>
+<TabItem label="Javascript (Workers)" icon="seti:javascript">
+
+```js title="JavaScript"
+import OpenAI from "openai";
+import { useAIGateway, ProviderAuth } from "@cloudflare/ai-gateway";
+
+export default {
+	async fetch(request, env) {
+		useAIGateway({ binding: env.AI, gateway: "test-gateway" });
+
+		const unifiedAuth = ProviderAuth.unifiedBilling();
+		const resource = "xxx";
+		const model = "xxx";
+		const apiVersion = "xxx";
+
+		const azure_openai = new OpenAI({
+			apiKey: unifiedAuth,
+			baseURL: `https://${resource}.openai.azure.com/openai/deployments/${model}`,
+			defaultQuery: { "api-version": apiVersion },
+			defaultHeaders: { "api-key": unifiedAuth },
+		});
+
+		return Response.json({ configured: true });
+	},
+};
+```
+
+</TabItem>
+</Tabs>
