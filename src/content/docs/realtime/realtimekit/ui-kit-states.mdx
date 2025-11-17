@@ -63,6 +63,9 @@ For Web Components, you need to add an event listener to the `rtk-meeting` compo
 ### Example Code
 
 ```html
+<body>
+    <rtk-meeting id="meeting-component"></rtk-meeting>
+</body>
 <script type="module">
     import RealtimeKitClient from 'https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js';
     
@@ -70,6 +73,7 @@ For Web Components, you need to add an event listener to the `rtk-meeting` compo
         authToken: '<participant_auth_token>'
     });
 
+    // Add <rtk-meeting id="meeting-component" /> to your HTML, otherwise you will get error
     const meetingComponent = document.querySelector('#meeting-component');
     
     // Listen for state updates from rtk-meeting
