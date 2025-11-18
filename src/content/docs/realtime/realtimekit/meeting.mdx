@@ -1,0 +1,70 @@
+---
+pcx_content_type: navigation
+title: Meeting Creation
+slug: realtime/realtimekit/meeting-creation
+sidebar:
+  order: 7
+---
+
+In RealtimeKit, the virtual space where your users join, interact, and communicate in real-time is called a **Meeting**.
+
+Think of a Meeting as a persistent, configurable "room". You create it with a title and feature configuration, then add participants who are authorised to join.
+The Meeting itself doesn't "start" or "end"; it just exists.
+
+{/* TODO: Add a box diagram */}
+
+## Session
+
+A **Session** is a live instance of a Meeting. It starts automatically when the first participant joins the meeting and ends when the last participant leaves.
+A Session inherits all settings (like features and title) from its parent Meeting.
+
+Because the Meeting is persistent, it can have many different Sessions over time. Think of this model like an online classroom where students are enrolled.
+The Meeting is the permanent "classroom" and a Session is the actual "class" that begins whenever students join.
+
+In the SDK, the `RealtimeKitClient` instance represents a user's connection to a meeting Session. We refer to that client instance as the [meeting object](/realtime/realtimekit/meeting-object-explained/).
+
+:::note
+This distinction is important for billing. You are charged on a per-participant basis only for the duration of an active Session, not for an idle Meeting.
+:::
+
+## Configuration
+
+{/* TODO: Write about the main config properties */}
+
+## Disabling a meeting
+
+When the Meeting is no longer needed, you can simply disable it. Once disabled, no participants can join and no new Sessions can be started.
+
+{/* TODO: Add about marking meeting INACTIVE */}
+
+## Prerequisites
+
+Before you can create your first meeting, make sure you have followed the [Getting Started](/realtime/realtimekit/getting-started/) guide.
+You will need the following three values for your API requests:
+
+- Your Cloudflare `ACCOUNT_ID`
+- RealtimeKit `APP_ID`
+- Your `CLOUDFLARE_API_TOKEN` (with Realtime permissions)
+
+## Create a meeting
+
+You create and manage meetings, typically from your backend, using the [Meetings API endpoint](/api/resources/realtime_kit/subresources/meetings/).
+
+To create a RealtimeKit meeting, use the [Create Meeting](/api/resources/realtime_kit/subresources/meetings/methods/create/) endpoint.
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings \
+  --request POST \
+  --header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "title": "My First Cloudflare RealtimeKit meeting"
+    }'
+```
+
+## FAQ
+
+{/* TODO: refine questions and add answers */}
+
+1. Can I schedule a meeting using RealtimeKit?
+2. How can I ensure that no participant can join meeting after a given date?
