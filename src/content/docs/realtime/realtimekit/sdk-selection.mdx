@@ -3,7 +3,7 @@ pcx_content_type: navigation
 title: Select SDK(s)
 slug: realtime/realtimekit/sdk-selection
 sidebar:
-  order: 5
+  order: 4
 ---
 
 :::note
@@ -15,6 +15,7 @@ If you haven't already, we recommend trying out our [demo app](https://demo.real
 Cloudflare Realtime provides two ways to build real-time media applications: use **Core SDK only** to build custom UI, or use **Core SDK + UI Kit** for prebuilt easy-to-use components. Understanding the relationship between these SDKs will help you make the right choice.
 
 **Core SDK** is the foundation that provides all the WebRTC APIs, media management, and networking capabilities. It gives you programmatic access to:
+
 - Audio and video streams
 - Participant lists (Waitlisted, Joined, Active on current page)
 - Screen sharing
@@ -38,12 +39,14 @@ UI Kit always includes Core SDK. You cannot use UI Kit without Core SDK, as UI K
 ### Quick Decision Guide
 
 Choose **Core SDK only** if you:
+
 - Need the smallest possible bundle size.
 - Want full control and will build the UI from scratch.
 - Prefer managing all meeting actions, flows, and UI logic yourself.
 - Only need specific APIs to control media, recording, chat, without any prebuilt UI.
 
 Choose **Core SDK + UI Kit** if you:
+
 - Want everything that Core SDK provides plus prebuilt UI components.
 - Want to get started quickly with pluggable prebuilt components.
 - Need a complete meeting experience that you can customize and integrate in your existing app or website with minimal effort.
@@ -55,21 +58,23 @@ Choose **Core SDK + UI Kit** if you:
 Both SDKs support multiple platforms and frameworks:
 
 **Core SDK available for:**
+
 - Web: JavaScript/TypeScript (Angular, Vue, Svelte, vanilla JS), React
 - Mobile: React Native, Flutter, Android (Kotlin/Java), iOS (Swift/Objective-C)
 
 **UI Kit available for:**
+
 - Web: React, Angular, Web Components (can be used with any web framework)
 - Mobile: React Native, Flutter, Android (Kotlin/Java), iOS (Swift/Objective-C)
 
 Here’s a quick reference for the available SDKs, with links to their respective packages:
 
-| Framework/Library | Core SDK | UI Kit |
-| --- | --- | --- |
-| Web Components | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-ui) |
-| Angular | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-angular-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui) |
-| React | [@cloudflare/realtimekit-react](https://www.npmjs.com/package/@cloudflare/realtimekit-react) | [@cloudflare/realtimekit-react-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui) |
-| React Native | [@cloudflare/realtimekit-react-native](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) |
+| Framework/Library | Core SDK                                                                                                   | UI Kit                                                                                                           |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Web Components    | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)                           |
+| Angular           | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-angular-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)           |
+| React             | [@cloudflare/realtimekit-react](https://www.npmjs.com/package/@cloudflare/realtimekit-react)               | [@cloudflare/realtimekit-react-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)               |
+| React Native      | [@cloudflare/realtimekit-react-native](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) |
 
 **Wrapper Packages**
 
@@ -91,11 +96,13 @@ For Web, the base Core SDK is `@cloudflare/realtimekit` and the base UI Kit is `
 With this approach, you use Core SDK APIs directly and build your own UI.
 
 Core SDK provides:
+
 - Low-level access to media and networking primitives.
 - Small bundle size and high flexibility.
 - Direct access to WebRTC media streams and connection management.
 
 **Core capabilities include:**
+
 - **Media management**: Audio, video, screen sharing streams
 - **Participant management**: Join, leave, mute, unmute
 - **Connection handling**: Network state, reconnection logic
@@ -105,11 +112,13 @@ Core SDK provides:
 - **Plugins**: Screen share, whiteboard, file sharing APIs
 
 **Core SDK does not provide:**
+
 - UI components (Chat, notifications, recording indicators, etc.). You would have to build the entire UI from scratch.
 - Meeting layouts & participant pagination UI.
 - Plugins (UI Kit contains the visual aspect of plugins). Requires additional implementation.
 
 Consider Core SDK only when you need:
+
 - Complete control over every UI element and workflow.
 - Minimal UI (for example, only video tiles, screen share, or audio-only).
 - Tight performance and bundle size constraints.
@@ -129,6 +138,7 @@ With this approach, you use UI Kit components that internally handle all Core SD
 - You still have access to Core SDK APIs when needed for advanced customization.
 
 Choose Core SDK + UI Kit when you need:
+
 - Fast time to market with production-ready meeting UI.
 - Professional, accessible UI without building from scratch.
 - Customizable components that handle meeting state automatically.
@@ -139,6 +149,7 @@ Choose Core SDK + UI Kit when you need:
 **What UI Kit provides:**
 
 UI Kit includes a comprehensive component library:
+
 - **Layout components**: Grid, Simple Grid, Spotlight Grid, Mixed Grid, Sidebar
 - **Participant components**: Participant Tile, Name Tag, Avatar, Participant Count, Participant Tile
 - **Control components**: Responsive Control Bar, Media toggles, Settings (Audio, Video)
@@ -147,6 +158,7 @@ UI Kit includes a comprehensive component library:
 - **Screen components**: Setup Screen, Meeting Screen, Idle Screen, Ended Screen
 
 Extensibility via add-ons:
+
 - Add custom buttons to the control bar
 - Host controls (camera, mic, chat permissions)
 - Hand raise functionality
@@ -175,18 +187,18 @@ When using UI Kit, you still have access to all Core SDK APIs for advanced custo
 
 ### Technical comparison
 
-| Feature | Core SDK only | Core SDK + UI Kit |
-|---------|----------|--------|
-| **What you get** | Core SDK APIs only | Core SDK + prebuilt UI components |
-| **Bundle size** | Minimal (media/network only) | Larger (includes Core SDK + UI components) |
-| **Time to ship** | Longer (build UI from scratch) | Faster (UI Kit handles Core SDK calls) |
-| **Customization** | Complete control, manual implementation | High customization via components and themes |
-| **State management** | Manual handling of Core SDK state | Automatic, UI Kit manages Core SDK state |
-| **UI flexibility** | Unlimited (build anything) | High (component library + add-ons) |
-| **Learning curve** | Steeper (learn Core SDK APIs directly) | Gentler (declarative components wrap Core SDK) |
-| **Maintenance** | More UI code to maintain | Less code, component updates included |
-| **Design system** | Integrate with any system | Theming system, or use individual components |
-| **Access to Core SDK** | Direct API access | Full Core SDK access + UI components |
+| Feature                | Core SDK only                           | Core SDK + UI Kit                              |
+| ---------------------- | --------------------------------------- | ---------------------------------------------- |
+| **What you get**       | Core SDK APIs only                      | Core SDK + prebuilt UI components              |
+| **Bundle size**        | Minimal (media/network only)            | Larger (includes Core SDK + UI components)     |
+| **Time to ship**       | Longer (build UI from scratch)          | Faster (UI Kit handles Core SDK calls)         |
+| **Customization**      | Complete control, manual implementation | High customization via components and themes   |
+| **State management**   | Manual handling of Core SDK state       | Automatic, UI Kit manages Core SDK state       |
+| **UI flexibility**     | Unlimited (build anything)              | High (component library + add-ons)             |
+| **Learning curve**     | Steeper (learn Core SDK APIs directly)  | Gentler (declarative components wrap Core SDK) |
+| **Maintenance**        | More UI code to maintain                | Less code, component updates included          |
+| **Design system**      | Integrate with any system               | Theming system, or use individual components   |
+| **Access to Core SDK** | Direct API access                       | Full Core SDK access + UI components           |
 
 ### How to decide
 

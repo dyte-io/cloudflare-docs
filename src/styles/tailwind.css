@@ -5,7 +5,6 @@
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 
 @source "../**/*.{astro,html,js,jsx,ts,tsx,css}";
-@source not "../content/";
 
 @theme {
 	--color-black: var(--sl-color-white);
