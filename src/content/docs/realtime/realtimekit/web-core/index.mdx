@@ -1,0 +1,114 @@
+---
+pcx_content_type: navigation
+title: Build with Web Core
+slug: realtime/realtimekit/web-core
+sidebar:
+  order: 6
+  label: Initialize SDK
+---
+
+import { Tabs, TabItem, Render } from "~/components";
+
+In this guide, we will cover how to initialize the SDK.
+
+:::note
+To initialize the SDK, you will need to have a participant auth token.
+
+If you don't have a participant auth token, please follow the [Participant Creation](/realtime/realtimekit/participant-creation/) guide to create one.
+:::
+
+<Render file="realtimekit/common/default-meeting-examples" product="realtime" />
+
+### Initialize Core SDK
+
+To integrate the Core SDK, you will need to initialize it with a participant's auth token, and then use the provided SDK APIs to control the peer in the session.
+
+Initialization might differ slightly based on your tech stack. Please choose your preferred tech stack below.
+
+<Tabs syncKey="realtimeKitFrameworkTabs">
+<TabItem label="Web Components">
+
+For Web Components, use `@cloudflare/realtimekit` as the Core SDK and `@cloudflare/realtimekit-ui` as the UI Kit.
+
+To get started, use the `RealtimeKitClient` class from the Core SDK to initialize your session.
+
+```html
+<script type="module">
+	import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+	const meeting = await RealtimeKitClient.init({
+		authToken: "<participant_auth_token>",
+	});
+
+	await meeting.join();
+</script>
+```
+
+Alternatively, if you are supporting older browsers, you can use the UMD version of the SDK. This is a browser bundle that includes all dependencies.
+UMD version provides a global `RealtimeKitClient` object, on window, that you can use to initialize your session.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/browser.js"></script>
+<script>
+	const meeting = await RealtimeKitClient.init({
+	    authToken: '<participant_auth_token>'
+	});
+
+	await meeting.join();
+</script>
+```
+
+<Render file="realtimekit/web/sdk-init-options" product="realtime" />
+
+For more details, see the [RealtimeKitClient reference](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient).
+
+`meeting` object is the main entry point to the RealtimeKit SDK. It provides methods to control the peer in the session. For more details, see the [Meeting Object Explained](/realtime/realtimekit/meeting-object-explained/).
+
+</TabItem>
+<TabItem label="React">
+
+For React, use `@cloudflare/realtimekit-react` as the Core SDK (a React wrapper around `@cloudflare/realtimekit`) and `@cloudflare/realtimekit-react-ui` as the UI Kit.
+
+The React SDK provides hooks for reactivity and a provider component to wrap your app.
+
+```jsx
+import {
+	RealtimeKitProvider,
+	useRealtimeKitClient,
+	useRealtimeKitSelector,
+} from "@cloudflare/realtimekit-react";
+import { useEffect } from "react";
+
+function App() {
+	const [meeting, initMeeting] = useRealtimeKitClient();
+	const [authToken, setAuthToken] = useState("<participant_auth_token>");
+
+	useEffect(() => {
+		if (authToken) {
+			initMeeting({
+				authToken: authToken,
+			});
+		}
+	}, [authToken]);
+
+	useEffect(() => {
+		if (meeting) {
+			meeting.join(); // Joining the session
+		}
+	}, [meeting]);
+
+	return (
+		<RealtimeKitProvider value={meeting}>
+			{/* Your app will be here */}
+		</RealtimeKitProvider>
+	);
+}
+```
+
+<Render file="realtimekit/web/sdk-init-options" product="realtime" />
+
+For more details, see the [RealtimeKitClient reference](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient).
+
+`meeting` object is the main entry point to the RealtimeKit SDK. It provides methods to control the peer in the session. For more details, see the [Meeting Object Explained](/realtime/realtimekit/meeting-object-explained/).
+
+</TabItem>
+</Tabs>

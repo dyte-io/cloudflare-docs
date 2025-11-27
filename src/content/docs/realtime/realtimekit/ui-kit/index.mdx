@@ -1,0 +1,121 @@
+---
+pcx_content_type: navigation
+title: Build with UI Kit
+sidebar:
+  order: 5
+  label: Basic Implementation
+---
+
+import { Tabs, TabItem, Render } from "~/components";
+
+<Render file="realtimekit/common/default-meeting-examples" product="realtime" />
+
+### Default Meeting UI Component
+
+So far we have seen how to initialize the SDK and join a session. However despite doing that, participants could not see or hear each other. That is because we have not added any UI components to our app.
+
+The default RealtimeKit Meeting UI component gives you a complete meeting experience out of the box, with all the essential features built in. Just drop it into your app and you’re ready to go.
+
+We will first see how to use the default meeting UI component and then we will see how to use the UI Kit components to build your own experience in upcoming guides.
+
+Now, let’s update the example to use the UI Kit for a full-featured meeting with minimal effort.
+
+<Tabs syncKey="realtimeKitFrameworkTabs">
+<TabItem label="Web Components">
+
+To use the custom HTML elements provided by the UI Kit, you need to import the UI Kit library.
+
+Add this import script to your HTML, ideally within the `head` tag.
+
+```html
+<script type="module">
+	import { defineCustomElements } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/loader/index.es2017.js";
+	defineCustomElements();
+</script>
+```
+
+Place the rtk-meeting component in your HTML file.
+
+```html
+<body>
+	<rtk-meeting></rtk-meeting>
+</body>
+```
+
+Place the script tag in your HTML file.
+
+```html
+<script type="module">
+	import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+
+	const meeting = await RealtimeKitClient.init({
+		authToken: "<participant_auth_token>",
+	});
+
+	document.querySelector("rtk-meeting").showSetupScreen = true;
+	document.querySelector("rtk-meeting").meeting = meeting;
+</script>
+```
+
+`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio video before joining the session.
+
+:::note
+Default Meeting UI (rtk-meeting component) auto joins the session therefore you don't have to call `meeting.join()`.
+:::
+
+</TabItem>
+<TabItem label="React">
+
+```jsx
+import {
+	RealtimeKitProvider,
+	useRealtimeKitClient,
+	useRealtimeKitSelector,
+} from "@cloudflare/realtimekit-react";
+import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
+import { useEffect } from "react";
+
+function App() {
+	const [meeting, initMeeting] = useRealtimeKitClient();
+	const [authToken, setAuthToken] = useState("<participant_auth_token>");
+
+	useEffect(() => {
+		if (authToken) {
+			initMeeting({
+				authToken: authToken,
+			});
+		}
+	}, [authToken]);
+
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkMeeting showSetupScreen={true} meeting={meeting} />
+		</RealtimeKitProvider>
+	);
+}
+```
+
+`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio video before joining the session.
+
+:::note
+Default Meeting UI (RtkMeeting component) auto joins the session therefore you don't have to call `meeting.join()`.
+:::
+
+</TabItem>
+</Tabs>
+
+## Next Steps
+
+You've successfully integrated RealtimeKit with the default meeting UI. Participants can now see and hear each other in sessions.
+
+### Building Custom Meeting Experiences
+
+While the default UI provides a complete meeting experience, you may want to build a custom interface using individual UI Kit components. This approach gives you full control over the layout, design, and user experience.
+
+To build your own custom meeting UI, follow these guides in order:
+
+1. **[UI Kit Components Library](/realtime/realtimekit/components-library/)** - Browse available components and their visual representations
+2. **[UI Kit States](/realtime/realtimekit/ui-kit-states/)** - Learn how components communicate and synchronize with each other
+3. **[Peer Lifecycle](/realtime/realtimekit/peer-lifecycle/)** - Understand different meeting states and transitions
+4. **[Meeting Object Explained](/realtime/realtimekit/meeting-object-explained/)** - Access meeting data and participant information using the Core SDK
+5. **[Build Your Own UI](/realtime/realtimekit/build-your-own-ui/)** - Put everything together to create a custom meeting interface
