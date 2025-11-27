@@ -5,62 +5,53 @@ sidebar:
   order: 3
 ---
 
-This page explains the core concepts and terminology used in RealtimeKit.
+This page outlines the core concepts and key terminology used throughout RealtimeKit.
 
 ### App
 
-An **App** serves as a container for your RealtimeKit application, logically organizing related meetings and participants.
+An App represents a **workspace** within RealtimeKit. It groups together your meetings, participants, presets, recordings, and other configuration under an isolated namespace.
 
-For example, if you are building an interview platform, you might create two apps: `Interviews - staging` and `Interviews - production`. If you later decide to build an assessment platform, you could similarly create `Assessments - staging` and `Assessments - production`.
-
-This structure helps you manage meetings and participants in a clear, organized manner.
+Treat each App like an environment-specific container—most teams create one App for staging and another for production to avoid mixing data.
 
 ### Meeting
 
-A **Meeting** is the fundamental communication channel in RealtimeKit. You can think of it like an event on your calendar - it is a persistent, long-lived container or "room" that serves as a blueprint for its [sessions](/realtime/realtimekit/concepts/#session). Every session created for this meeting inherits the same base configuration, such as the title of the meeting and whether to automatically record the session when it starts. You add participants to the meeting, which grants them access to join a session of that meeting.
+A Meeting is a **re-usable virtual room** that you can join anytime.
+Every time participants join a meeting, a new [session](/realtime/realtimekit/concepts#session) is created.
+
+A session is marked `ENDED` shortly after the last participant leaves. A meeting can have only **one active session** at any given time.
+
+For more information about meetings, refer to [Meetings](/realtime/realtimekit/concepts#meeting).
 
 ### Session
 
-A **Session** is a single, live instance of a meeting. To continue the analogy, if a meeting is the calendar event, the session is the actual video call you join. It begins when the first participant joins and ends shortly after the last participant leaves. Each session is unique and has its own lifecycle, including its own set of participants and associated data like chat messages and recordings.
+A Session is the **live instance of a meeting**. It is created when the first participant joins a meeting and ends shortly after the last participant leaves.
 
-For example, you might have a recurring "Weekly Standup" **meeting** with five participants added to it. The standup that takes place on Monday, August 11th at 11:30 AM is a specific **session**. All five participants can join this session using their unique `authToken`. For the following week's standup, you could create a new meeting and add participants again, or you could simply reuse the existing meeting and auth tokens (as long as they have not expired) to create a new session.
+Each session is independent, with its own participants, chat, and recordings. It also inherits the configurations set while creating the meeting - `record on start`, `persist_chat`, and more.
 
-### Preset
-
-A **Preset** is a template that defines a participant's role, permissions, and UI experience within a session. Beyond controlling permissions for actions like producing video and audio, sharing screens, and creating polls, presets also allow you to customize the look and feel of the UI, including colors and themes to match your app's branding.
-
-Different participants in the same meeting can have different presets, allowing for complex and flexible roles. For example, in a large ed-tech class:
-
-- The **teacher** might join with a `webinar-host` preset, giving them full control to share video, audio, and their screen.
-- **Students** would join with a `webinar-participant` preset, which restricts them from sharing media but allows them to use the chat to ask questions.
-- A **teaching assistant** could join with a `group-call-host` preset, enabling them to view all participants in a grid to monitor the class.
+Example - A recurring “Weekly Standup” **meeting will generate a new session** every time participants join.
 
 ### Participant
 
-A **Participant** is the server-side representation of a user within a session. When you add a user to a meeting via the REST API, a participant is created. This API call returns a unique `authToken` that the client-side SDK uses to join the session and authenticate the user.
+A **Participant** is created when you add a user to a meeting via the [REST API](/api/resources/realtime_kit/subresources/meetings/methods/create/). This API call returns a unique `authToken` that the client-side SDK uses to join the session and authenticate the user.
 
-### Peer
+> **Note:** Please do not re-use auth tokens for participants.
 
-A **Peer** is the client-side representation of a [participant](/realtime/realtimekit/concepts/#participant) in a session. While the terms are sometimes used interchangeably, a peer represents a specific instance of a participant joining the meeting. For example, if a single user joins the same meeting from two different browser tabs, they will have the same participant ID (also referred to as a user ID) but two unique peer IDs.
+For more information about participants, refer to [Participants](/realtime/realtimekit/concepts/participant).
 
-### Stage
+### Preset
 
-The **Stage** is the logical space within a video call where participants can actively share their audio and video. In use cases like webinars, a participant's preset determines whether they have permission to be "on stage" as a presenter or if they are an audience member who only consumes the content.
+A Preset is a reusable set of permissions that defines the experience and the UI’s look and feel for a participant.
 
-### Waiting Room
+Created at the App level, it can be applied to any participant across any meeting in that App.
 
-The **Waiting Room** is a virtual lobby that provides an extra layer of security. When enabled, participants are held in the waiting room until a host with the proper permissions explicitly admits them into the main session. This is useful for controlling access to private or sensitive meetings.
+It also define the meeting type a user joins—video call, audio call, webinar, or livestream. Participants in the same meeting can use different presets to create flexible roles.
 
-### Core SDK
+Example - in a large ed-tech class -
 
-The **Core SDK** is the client-side library that provides the business logic for all of RealtimeKit's features. It is a data-only library that handles the complex media and networking tasks, giving you full control to build a completely custom user interface. It serves as the foundation upon which the UI Kit is built.
+- **Teacher** will join with a `webinar-host` preset, allowing them to share their media and providing host controls.
+- **Students** will join with a `webinar-participant` preset, which restricts them from sharing media but allows them to use features like chat.
+- **Teaching assistant** will join with a `group-call-host` preset, enabling them to share their media but not have full control.
 
-### UI Kit
+It also let you customize the UI’s look and feel, including colors and themes, so the experience matches your app’s branding.
 
-The **UI Kit** is a library of pre-built, customizable UI components that sits on top of the Core SDK. It provides the fastest and simplest way to integrate a complete video and voice call interface into any application, allowing you to get started with just a few lines of code while still offering flexibility for customization.
-
-### Realtime SFU (Selective Forwarding Unit)
-
-A **Selective Forwarding Unit (SFU)** is a server architecture that efficiently manages real-time media streams in multi-party video calls. Instead of each participant sending their media directly to every other participant in a bandwidth-intensive mesh network, each participant sends a single stream to the SFU. The SFU then forwards those streams to the other participants, making it a highly scalable model.
-
-The [**Realtime SFU**](/realtime/sfu) is Cloudflare's implementation of this architecture and is the core engine that powers RealtimeKit. It runs on Cloudflare's global Anycast network, meaning participants automatically connect to the nearest data center. This minimizes latency and ensures a high-quality experience regardless of a user's location. The SFU intelligently routes media, handling the complex task of receiving multiple streams and forwarding them to the appropriate participants.
+For more information about presets, refer to [Presets](/realtime/realtimekit/concepts/preset).
