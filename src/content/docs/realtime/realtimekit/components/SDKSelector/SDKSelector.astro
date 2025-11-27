@@ -1,13 +1,6 @@
 ---
 import { z } from "astro:schema";
 import SDKSelector from "./SDKSelector";
-type Props = z.infer<typeof props>;
-
-const props = z.object({
-	showInstallationHelpers: z.boolean().optional(),
-});
-
-const { showInstallationHelpers } = props.parse(Astro.props);
 ---
 
-<SDKSelector client:load showInstallationHelpers={showInstallationHelpers} />
+<SDKSelector client:load />

@@ -4,9 +4,7 @@ pcx_content_type: overview
 sidebar:
   order: 1
   group:
-    badge:
-      text: Beta
-      variant: tip
+    badge: Beta
 head:
   - tag: title
     content: Overview
@@ -16,15 +14,15 @@ import { Description, LinkButton } from "~/components";
 import Pill from "./components/Pill/Pill.astro";
 
 <Description>
-	Add live video and voice to your web or mobile apps in minutes — fully
-	customisable, Integrate in just a few lines of code.
+	Add live video and voice to your web or mobile apps in minutes — customisable
+	SDKs, Integrate in just a few lines of code.
 </Description>
 With RealtimeKit, you can expect:
 
 - **Fast, simple integration:** Add live video
-  and voice calling to any platform in a few lines of code.
+  and voice calling to any platform using our SDKs in minutes.
 - **Customisable:**
-  Full control to tailor the experience to your needs.
+  Tailor the experience to your needs.
 - **Powered by WebRTC:**
   Built on top of modern, battle-tested WebRTC technology. RealtimeKit sits on top
   of Realtime SFU(link) handling media track management, peer management, and
@@ -48,13 +46,15 @@ Experience the product:
 </LinkButton>
 <LinkButton
 	variant="ghost"
-	href="https://demo.realtime.cloudflare.com"
+	href="https://dash.cloudflare.com/?to=/:account/realtime/kit"
 	target="_blank"
 >
-	RealtimeKit demo app
+	RealtimeKit Dashboard
 </LinkButton>
 
 ## Build with RealtimeKit
+
+RealtimeKit powers a wide range of usecases — here are the most common ones
 
 <div>
 	#### Group Calls
@@ -93,11 +93,9 @@ Experience the product:
 
 ## Product Suite
 
-- [**UI Kit**](https://docs.realtime.cloudflare.com/ui-kit) <Pill>Recommended</Pill> sits on top of the Core
-  SDK — library of pre-built, customizable UI components for rapid interface
-  development.
+- [**UI Kit**](https://docs.realtime.cloudflare.com/ui-kit) <Pill>Recommended</Pill> UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
 
-- [**Core SDK**](https://docs.realtime.cloudflare.com/web-core) built on top of Realtime SFU for a fully customisable experience — backed by comprehensive REST APIs and a global backend infrastructure, giving you everything you need to build scalable real-time communication features.
+- [**Core SDK**](https://docs.realtime.cloudflare.com/web-core) Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
 
 - [**Realtime SFU**](/realtime/sfu) efficiently routes media with low latency—all running on Cloudflare’s global network for reliability and scale.
 
