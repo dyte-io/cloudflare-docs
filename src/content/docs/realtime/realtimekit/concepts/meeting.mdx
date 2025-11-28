@@ -10,7 +10,7 @@ import { Details } from "~/components";
 
 Meeting is a **re-usable virtual room** that you can join and interact in, in real-time.
 
-You can assign  a title and feature configuration to it, then add participants who are authorised to join. The Meeting itself doesn't "start" or "end";  it just exists.
+You can assign a title and feature configuration to it, then add participants who are authorised to join. The Meeting itself doesn't "start" or "end";  it just exists.
 
 Because Meetings do not have a specific date or time, you can create them well in advance or create them just-in-time, right when users need to join.
 
@@ -62,7 +62,8 @@ flowchart TB
 ```
 
 ### Session
-A **Session** is a live instance of a Meeting. It starts automatically when the first participant joins the meeting and ends shortly after the last participant leaves. A Session inherits all settings (like features and title) from its parent Meeting.
+A **Session** is a live instance of a Meeting. It starts automatically when the first participant joins the meeting and ends shortly after the last participant leaves. 
+A Session inherits all settings (like features and title) from its parent Meeting.
 
 Because the Meeting is persistent, it can have many different Sessions over time. 
 
@@ -73,6 +74,10 @@ The Meeting is the permanent “standup event” that exists in your system.
 Each week, when participants join for that week’s standup, a **new Session** is created — this Session represents that week’s actual live standup.
 
 > **Note**: This distinction is important for billing. You are charged on a per-participant basis only for the duration of an active Session, not for an idle Meeting.
+
+You can get the details of your sessions from the [RealtimeKit Dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit) or using the [Sessions API](/api/resources/realtime_kit/subresources/sessions/) endpoints.
+
+![Sessions in RealtimeKit Dashboard](~/assets/images/realtime/realtimekit/dashboard-sessions.png)
 
 ### Meeting Terminologies
 
