@@ -14,11 +14,11 @@ import { Tabs, TabItem, Render } from "~/components";
 
 So far we have seen how to initialize the SDK and join a session. However despite doing that, participants could not see or hear each other. That is because we have not added any UI components to our app.
 
-The default RealtimeKit Meeting UI component gives you a complete meeting experience out of the box, with all the essential features built in. Just drop it into your app and you’re ready to go.
+The default RealtimeKit Meeting UI component gives you a complete meeting experience out of the box, with all the essential features built in. Just drop it into your app and you are ready to go.
 
 We will first see how to use the default meeting UI component and then we will see how to use the UI Kit components to build your own experience in upcoming guides.
 
-Now, let’s update the example to use the UI Kit for a full-featured meeting with minimal effort.
+Now, let us update the example to use the UI Kit for a full-featured meeting with minimal effort.
 
 <Tabs syncKey="realtimeKitFrameworkTabs">
 <TabItem label="Web Components">
@@ -57,10 +57,10 @@ Place the script tag in your HTML file.
 </script>
 ```
 
-`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio video before joining the session.
+`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio and video before joining the session.
 
 :::note
-Default Meeting UI (rtk-meeting component) auto joins the session therefore you don't have to call `meeting.join()`.
+The Default Meeting UI (`rtk-meeting` component) automatically joins the session, therefore you do not have to call `meeting.join()`.
 :::
 
 </TabItem>
@@ -95,18 +95,18 @@ function App() {
 }
 ```
 
-`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio video before joining the session.
+`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio and video before joining the session.
 
 :::note
-Default Meeting UI (RtkMeeting component) auto joins the session therefore you don't have to call `meeting.join()`.
+The Default Meeting UI (`RtkMeeting` component) automatically joins the session, therefore you do not have to call `meeting.join()`.
 :::
 
 </TabItem>
 </Tabs>
 
-## Next Steps
+## Next steps
 
-You've successfully integrated RealtimeKit with the default meeting UI. Participants can now see and hear each other in sessions.
+You have successfully integrated RealtimeKit with the default meeting UI. Participants can now see and hear each other in sessions.
 
 ### Building Custom Meeting Experiences
 

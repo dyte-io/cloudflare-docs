@@ -1,7 +1,10 @@
 {
 	"astro.content-intellisense": true,
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	 "[markdown]": {
+		"editor.formatOnSave": false
+	},
+	"editor.formatOnSave": false,
+	"editor.defaultFormatter": null,
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"cSpell.enableFiletypes": ["mdx"],
 	"files.associations": {
