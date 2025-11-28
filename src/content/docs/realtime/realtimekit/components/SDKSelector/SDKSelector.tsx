@@ -30,7 +30,7 @@ export default function SDKSelector() {
 
 	return (
 		<>
-			<div className="mb-3 flex flex-col gap-0 rounded-md bg-blue-100 p-2 dark:bg-neutral-800">
+			<div className="my-5 flex flex-col gap-0 rounded-md bg-blue-100 p-2 dark:bg-neutral-800">
 				<div className="flex w-full flex-row items-start justify-start gap-2">
 					{platforms.map((p) => (
 						<button
