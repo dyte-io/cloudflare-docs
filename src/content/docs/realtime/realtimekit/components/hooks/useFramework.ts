@@ -19,7 +19,7 @@ export const webFrameworks: Framework[] = [
 	},
 	{
 		id: "web-components",
-		label: "Web Components (HTML)",
+		label: "Web Components",
 	},
 	{
 		id: "angular",

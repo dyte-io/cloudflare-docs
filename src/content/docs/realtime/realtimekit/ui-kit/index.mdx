@@ -7,102 +7,158 @@ sidebar:
 ---
 
 import { Tabs, TabItem, Render } from "~/components";
-
-<Render file="realtimekit/common/default-meeting-examples" product="realtime" />
-
-### Default Meeting UI Component
-
-So far we have seen how to initialize the SDK and join a session. However despite doing that, participants could not see or hear each other. That is because we have not added any UI components to our app.
+import SDKSelector from '../components/SDKSelector/SDKSelector.astro';
+import CodeSnippet from '../components/CodeSnippet/CodeSnippet.astro';
 
 The default RealtimeKit Meeting UI component gives you a complete meeting experience out of the box, with all the essential features built in. Just drop it into your app and you are ready to go.
 
-We will first see how to use the default meeting UI component and then we will see how to use the UI Kit components to build your own experience in upcoming guides.
+<SDKSelector/>
 
-Now, let us update the example to use the UI Kit for a full-featured meeting with minimal effort.
+<CodeSnippet id="web-react">
+To **Initialise your SDK**, add the following code to your React application:
+```ts title="App.tsx"
+import { useEffect } from 'react';
+import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
 
-<Tabs syncKey="realtimeKitFrameworkTabs">
-<TabItem label="Web Components">
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+  useEffect(() => {
+    initMeeting({ authToken: '<auth-token>' });
+  }, []);
 
-To use the custom HTML elements provided by the UI Kit, you need to import the UI Kit library.
-
-Add this import script to your HTML, ideally within the `head` tag.
-
-```html
-<script type="module">
-	import { defineCustomElements } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/loader/index.es2017.js";
-	defineCustomElements();
-</script>
+  return <div></div>
+} 
 ```
+Use the [Create Participant API]() to fetch the `authToken`.
 
-Place the rtk-meeting component in your HTML file.
+Now, **Create a meeting component** using the `RTKMeeting` component and the `useRealtimeKitMeeting` hook (this hook provides access to the meeting object that contains all the meeting state and methods).
+```ts title="MyMeetingUI.tsx"
+import { useRealtimeKitMeeting } from '@cloudflare/realtimekit-react';
+import { RTKMeeting } from '@cloudflare/realtimekit-react-ui';
 
+export default function MyMeetingUI() {
+  const { meeting } = useRealtimeKitMeeting();
+  return (
+    <RTKMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
+  );
+} 
+```
+**Use the Meeting component** like so: 
+```ts title="App.tsx"
+import { useEffect } from 'react';
+import { useRealtimeKitClient, RealtimeKitProvider } from '@cloudflare/realtimekit-react';
+import MyMeetingUI from './MyMeetingUI.tsx'
+
+export default function App() {
+  const [meeting, initMeeting] = useRealtimeKitClient();
+
+  useEffect(() => {
+    initMeeting({ authToken: '<auth-token>' });
+  }, []);
+
+  return (
+    <RealtimeKitProvider value={meeting}>
+      <MyMeetingUI />
+    </RealtimeKitProvider>
+  );
+}
+```
+</CodeSnippet>
+
+<CodeSnippet id="web-web-components">
+**Add** the following **imports to your HTM** file:
+```html title="index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Import helper to load UI Kit components -->
+    <script type="module">
+      import { defineCustomElements } from 'https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+    <!-- Import RealtimeKit Core via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/browser.js"></script>
+  </head>
+</html>
+```
+Use the `rtk-meeting` component to **display the meeting UI**.
 ```html
 <body>
-	<rtk-meeting></rtk-meeting>
+    <rtk-meeting id="my-meeting" show-setup-screen="true" />
 </body>
 ```
+**Initialise the SDK** using the `authToken` and pass the meeting prop to the UI component to connect to the meeting.
 
-Place the script tag in your HTML file.
-
+Use the [Create Participant API]() to fetch the `authToken`.
 ```html
-<script type="module">
-	import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
-
-	const meeting = await RealtimeKitClient.init({
-		authToken: "<participant_auth_token>",
+<script>
+	const authToken = <auth-token>
+	// Initialize the SDK
+	RealtimeKitClient.init({
+	authToken,
+	}).then((meeting) => {
+	document.getElementById('my-meeting').meeting = meeting;
 	});
-
-	document.querySelector("rtk-meeting").showSetupScreen = true;
-	document.querySelector("rtk-meeting").meeting = meeting;
 </script>
 ```
+</CodeSnippet>
 
-`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio and video before joining the session.
 
-:::note
-The Default Meeting UI (`rtk-meeting` component) automatically joins the session, therefore you do not have to call `meeting.join()`.
-:::
+<CodeSnippet id="web-angular">
+**Load the RTKComponentsModule** into your app module.
 
-</TabItem>
-<TabItem label="React">
+This is typically the app.module.ts file.
+This allows you to use the UI components in your component HTML files.
 
-```jsx
-import {
-	RealtimeKitProvider,
-	useRealtimeKitClient,
-	useRealtimeKitSelector,
-} from "@cloudflare/realtimekit-react";
-import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
-import { useEffect } from "react";
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RTKComponentsModule } from '@cloudflare/realtimekit-angular';
+import { AppComponent } from './app.component';
 
-function App() {
-	const [meeting, initMeeting] = useRealtimeKitClient();
-	const [authToken, setAuthToken] = useState("<participant_auth_token>");
+@NgModule({
+declarations: [AppComponent],
+imports: [BrowserModule, RTKComponentsModule],
+providers: [],
+bootstrap: [AppComponent],
+})
+export class AppModule {};
 
-	useEffect(() => {
-		if (authToken) {
-			initMeeting({
-				authToken: authToken,
-			});
-		}
-	}, [authToken]);
+```
+_Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as true in your tsconfig.json.
 
-	return (
-		<RealtimeKitProvider value={meeting}>
-			<RtkMeeting showSetupScreen={true} meeting={meeting} />
-		</RealtimeKitProvider>
-	);
+```ts
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true
+	}
 }
 ```
 
-`showSetupScreen` is a property that controls whether the setup screen should be shown or not. It is the screen where you can preview your audio and video before joining the session.
+**Load the RTKMeeting component** to your template file (component.html).
+```html
+<rtk-meeting #myid></rtk-meeting>
+```
+**Initialise the Meeting**
+```ts
+	class AppComponent {å
+	title = 'MyProject';
+	@ViewChild('myid') meetingComponent: RTKMeeting;
+	rtkMeeting: RealtimeKitClient;
 
-:::note
-The Default Meeting UI (`RtkMeeting` component) automatically joins the session, therefore you do not have to call `meeting.join()`.
-:::
+	async ngAfterViewInit() {
+		const meeting = await RealtimeKitClient.init({
+		authToken: '<auth-token>',
+		});
+		meeting.join();
+		this.rtkMeeting = meeting;
+		if (this.meetingComponent) this.meetingComponent.meeting = meeting;
+	}
+	}
+```
+Use the [Create Participant API]() to fetch the `authToken`.
+</CodeSnippet>
 
-</TabItem>
-</Tabs>
 
 ## Next steps
 

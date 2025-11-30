@@ -12,7 +12,7 @@ export function RealtimePill({ children }: PillProps) {
 				borderRadius: "9999px",
 				padding: "0.1rem 0.5rem",
 				fontSize: "12px",
-				margin: "0 8px",
+				margin: "0 4px",
 				fontWeight: 500,
 				display: "inline-block",
 			}}

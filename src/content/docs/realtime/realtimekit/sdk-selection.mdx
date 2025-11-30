@@ -6,21 +6,11 @@ sidebar:
   order: 4
 ---
 import SDKSelector from './components/SDKSelector/SDKSelector.astro';
+import Pill from './components/Pill/Pill.astro';
 
 :::note
 If you haven't already, we recommend trying out our [demo app](https://demo.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
 :::
-
-### Select you framework
-
-RealtimeKit support all the popular frameworks for web and mobile platforms. Please select the Platform and Framework that you are building on.
-<SDKSelector />
-
-
-We recommend using our UI Kits For most use cases.
-
-> **Note:** When you use our UI Kit, you also get the core SDK with it, which can be used to build additional features based on your needs.
-
 
 ### Offerings
 
@@ -28,17 +18,21 @@ RealtimeKit provides two ways to build real-time media applications:
 
 **Core SDK**: Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
 
-**UI Kit**: UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
+**UI Kit**: <Pill>Recommended</Pill> UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
+
+> **Note:** When you use our UI Kit, you also get access to the core SDK with it, which can be used to build additional features based on your needs.
 
 
-### Platform Availability 
-Both SDKs support multiple platforms and frameworks:
+### Select you framework
 
-| Framework/Library                    | Core SDK                                                                                                   | UI Kit                                                                                                           | 
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | 
-| Web-Components, HTML, Vue, Svelte    | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)                           |
-| React                                | [@cloudflare/realtimekit-react](https://www.npmjs.com/package/@cloudflare/realtimekit-react)               | [@cloudflare/realtimekit-react-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)               |
-| Angular                              | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-angular-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)           |
+RealtimeKit support all the popular frameworks for web and mobile platforms. Please select the Platform and Framework that you are building on.
+<SDKSelector />
+
+| Framework/Library                      | Core SDK                                                                                                   | UI Kit                                                                                                           | 
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | 
+| Web-Components (HTML, Vue, Svelte)     | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)                           |
+| React                                  | [@cloudflare/realtimekit-react](https://www.npmjs.com/package/@cloudflare/realtimekit-react)               | [@cloudflare/realtimekit-react-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)               |
+| Angular                                | [@cloudflare/realtimekit](https://www.npmjs.com/package/@cloudflare/realtimekit)                           | [@cloudflare/realtimekit-angular-ui](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)           |
 
 
 ### Technical comparison
@@ -60,26 +54,3 @@ Here is a comprehensive guide to help you choose the right option for your proje
 :::note
 If you are building with our Core SDK only, you can reference our [open source repos](https://github.com/orgs/cloudflare/repositories?q=realtimekit) for implementation examples to speed up your development.
 :::
-
-Use these quick decision prompts to determine whether the UI Kit or Core SDK is the better fit for your meeting experience, based on your design needs, timelines, and constraints
-
-**Are you fine with the standard meeting UI of [demo app](https://demo.realtime.cloudflare.com/meeting?demo=Default) or the [default sample](/realtime/realtimekit/getting-started/)?**
-- Yes, with minor changes/rearrangment or select UI components  → UI Kit
-- No, need fully custom design → Core SDK
-
-**Is time to market critical?**
-- Yes, need to ship quickly → UI Kit
-- No, have time to build custom → Core SDK
-
-**Do you have an existing design system?**
-- No, need a professional UI → UI Kit
-- Yes, must match exactly → Core SDK 
-
-**Is bundle size a critical constraint?**
-- No, normal constraints → UI Kit
-- Yes, every KB matters → Core SDK
-
-**Do you need only specific features (for example, audio-only, screen share)?**
-- No, need full meeting experience → UI Kit
-- Yes, minimal UI needed → Core SDK
-   
