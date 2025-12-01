@@ -1,13 +1,13 @@
 ---
 title: Create Custom Recording App Using Recording SDKs
-sidebar_position: 12
-slug: realtime/realtimekit/recording/create-record-app-using-sdks
+sidebar_position: 9
+slug: realtime/realtimekit/recording-guide/create-record-app-using-sdks
 description: >-
   Learn how to create a recording app using RealtimeKit's SDKs. Follow our guide for
   effective app creation and integration.
 ---
 
-When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid](/react-ui-kit/components/rtk-grid).
+When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid](https://docs.realtime.cloudflare.com/react-ui-kit/components/rtk-grid).
 
 If you wish to have a customized layout for your recording application, RealtimeKit's custom recording SDKs provide the flexibility to tailor the appearance of your recordings according to your preferences. You can choose from options like:
 
@@ -20,7 +20,7 @@ If you wish to have a customized layout for your recording application, Realtime
 
 Let's dive in to understand the steps involved in creating a custom appearance for your RealtimeKit recording app.
 
-The custom recording SDKs are used on top of the [UI kit](/react-ui-kit) or [Vanilla JS](/ui-kit). The `RealtimeKitRecording` class is used for managing the recording functionality within the SDK.
+The custom recording SDKs are used on top of the [UI Kit](/realtime/realtimekit/ui-kit) or [Core SDK](/realtime/realtimekit/core). The `RealtimeKitRecording` class is used for managing the recording functionality within the SDK.
 
 ## Constructor
 
@@ -119,11 +119,11 @@ Once `stopRecording` is called, the recorder in your recording app will exit aft
 
 ### Step 7: Deploy the recording app
 
-Once you've created the app, deploy it using a platform like [Vercel](https://vercel.com/docs/concepts/get-started). Make sure to note the URL where you have deployed the app, as you will have to enter this URL in RealtimeKit's recording API.
+Once you've created the app, deploy it using a platform like [Cloudflare Workers](https://cloudflare.com/workers). Make sure to note the URL where you have deployed the app, as you will have to enter this URL in RealtimeKit's recording API.
 
 ### Step 8: Specify the custom URL
 
-In the [Start Recording a Meeting](/api#/operations/start_recording) API, provide the custom URL (obtained from the previous step) to indicate the location of your deployed app.
+In the [Start Recording a Meeting](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) API, provide the custom URL (obtained from the previous step) to indicate the location of your deployed app.
 
 <head>
   <title>Create Custom Recording App Using Recording SDKs Guide</title>

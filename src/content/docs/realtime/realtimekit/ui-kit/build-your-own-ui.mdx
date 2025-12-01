@@ -10,7 +10,7 @@ import { Tabs, TabItem, Steps, Render } from "~/components";
 This guide explains how to use Cloudflare RealtimeKit SDKs to build fully custom real-time video UIs.
 
 :::note[Prerequisites]
-This page builds upon the [Initialize SDK](/realtime/realtimekit/initialize-sdk/) and [Render Default Meeting UI](/realtime/realtimekit/render-default-meeting-ui/) & [UI Kit States](/realtime/realtimekit/ui-kit-states/) guides. Make sure you've read those first.
+This page builds upon the [Initialize SDK](/realtime/realtimekit/core/) and [Render Default Meeting UI](/realtime/realtimekit/ui-kit/) & [UI Kit States](/realtime/realtimekit/ui-kit/meeting-lifecycle/) guides. Make sure you've read those first.
 
 The code examples on this page assume you've already imported the necessary packages and initialized the SDK. We won't repeat those setup steps here for brevity.
 :::
@@ -22,13 +22,13 @@ The code examples on this page assume you've already imported the necessary pack
 
 ### Building Your Own UI, With UI Kit
 
-If default meeting component is not enough, and you need more control over layout or behavior, use [UI Kit components](/realtime/realtimekit/ui-kit-components/) to build a custom interface. The UI Kit provides pre-built components that sit on top of the Core SDK, letting you mix and match pieces while saving time compared to building from scratch.
+If default meeting component is not enough, and you need more control over layout or behavior, use [UI Kit components](/realtime/realtimekit/ui-kit/component-library/) to build a custom interface. The UI Kit provides pre-built components that sit on top of the Core SDK, letting you mix and match pieces while saving time compared to building from scratch.
 
 Building a custom UI requires managing participant audio, notifications, dialogs, component layout, and screen transitions yourself.
 
 <Tabs syncKey="realtimeKitFrameworkTabs">
 <TabItem label="Web Components">
-Similar to `rtk-meeting`, `rtk-ui-provider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit-states/) and syncs them with the UI Kit components.
+Similar to `rtk-meeting`, `rtk-ui-provider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit/meeting-lifecycle/) and syncs them with the UI Kit components.
 
 Unlike `rtk-meeting`, `rtk-ui-provider` allows you to pass any child components to it, if any one of the child components is a RealtimeKit component starting with `rtk-`, `rtk-ui-provider` will coordinate with the RealtimeKit component to sync the states.
 
@@ -174,16 +174,16 @@ For custom UIs, it is recommended to use `rtk-ui-provider` always.
 
 First level split of `rtk-meeting` using `rtk-ui-provider` has the following components:
 
-[`rtk-header`](/realtime/realtimekit/components-library/#rtk-header) is the header component that shows the session name and the session controls.<br/>
-[`rtk-stage`](/realtime/realtimekit/components-library/#rtk-stage) is the container component that contains the grid and sidebar components.<br/>
-[`rtk-grid`](/realtime/realtimekit/components-library/#rtk-grid) is the grid component that shows the participants in the session.<br/>
-[`rtk-sidebar`](/realtime/realtimekit/components-library/#rtk-sidebar) is the sidebar component that shows the sidebar, in which chat, polls content shows up.<br/>
-[`rtk-controlbar`](/realtime/realtimekit/components-library/#rtk-controlbar) is the controlbar component that shows the controls, such as camera, microphone, etc.<br/>
-[`rtk-notifications`](/realtime/realtimekit/components-library/#rtk-notifications) is the notifications component that shows the notifications for the session.<br/>
-[`rtk-participants-audio`](/realtime/realtimekit/components-library/#rtk-participants-audio) is the audio component that helps you listen other participants in the session.<br/>
-[`rtk-dialog-manager`](/realtime/realtimekit/components-library/#rtk-dialog-manager) is the dialog-manager component that shows the all supported dialogs, such as settings, breakout rooms, etc.<br/>
+[`rtk-header`](/realtime/realtimekit/ui-kit/component-library/#rtk-header) is the header component that shows the session name and the session controls.<br/>
+[`rtk-stage`](/realtime/realtimekit/ui-kit/component-library/#rtk-stage) is the container component that contains the grid and sidebar components.<br/>
+[`rtk-grid`](/realtime/realtimekit/ui-kit/component-library/#rtk-grid) is the grid component that shows the participants in the session.<br/>
+[`rtk-sidebar`](/realtime/realtimekit/ui-kit/component-library/#rtk-sidebar) is the sidebar component that shows the sidebar, in which chat, polls content shows up.<br/>
+[`rtk-controlbar`](/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) is the controlbar component that shows the controls, such as camera, microphone, etc.<br/>
+[`rtk-notifications`](/realtime/realtimekit/ui-kit/component-library/#rtk-notifications) is the notifications component that shows the notifications for the session.<br/>
+[`rtk-participants-audio`](/realtime/realtimekit/ui-kit/component-library/#rtk-participants-audio) is the audio component that helps you listen other participants in the session.<br/>
+[`rtk-dialog-manager`](/realtime/realtimekit/ui-kit/component-library/#rtk-dialog-manager) is the dialog-manager component that shows the all supported dialogs, such as settings, breakout rooms, etc.<br/>
 
-You can split all of these components further. To see more such components, please refer to our [components library](/realtime/realtimekit/components-library/).
+You can split all of these components further. To see more such components, please refer to our [components library](/realtime/realtimekit/ui-kit/component-library/).
 
 We have our UI Kit open source on GitHub, you can find it [here](https://github.com/cloudflare/realtimekit-ui).
 
@@ -197,7 +197,7 @@ You must include `rtk-notifications`, `rtk-participants-audio`, and `rtk-dialog-
 
 </TabItem>
 <TabItem label="React">
-Similar to `RtkMeeting`, `RtkUIProvider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit-states/) and syncs them with the UI Kit components.
+Similar to `RtkMeeting`, `RtkUIProvider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit/meeting-lifecycle/) and syncs them with the UI Kit components.
 
 Unlike `RtkMeeting`, `RtkUIProvider` allows you to pass any child components to it. If any one of the child components is a RealtimeKit component starting with `Rtk`, `RtkUIProvider` will coordinate with the RealtimeKit component to sync the states.
 
@@ -354,16 +354,16 @@ For custom UIs, it is recommended to use `RtkUIProvider` always.
 
 First level split of `RtkMeeting` using `RtkUIProvider` has the following components:
 
-[`RtkHeader`](/realtime/realtimekit/components-library/#rtkheader) is the header component that shows the session name and the session controls.<br/>
-[`RtkStage`](/realtime/realtimekit/components-library/#rtkstage) is the container component that contains the grid and sidebar components.<br/>
-[`RtkGrid`](/realtime/realtimekit/components-library/#rtkgrid) is the grid component that shows the participants in the session.<br/>
-[`RtkSidebar`](/realtime/realtimekit/components-library/#rtksidebar) is the sidebar component that shows the sidebar, in which chat, polls content shows up.<br/>
-[`RtkControlbar`](/realtime/realtimekit/components-library/#rtkcontrolbar) is the controlbar component that shows the controls, such as camera, microphone, etc.<br/>
-[`RtkNotifications`](/realtime/realtimekit/components-library/#rtknotifications) is the notifications component that shows the notifications for the session.<br/>
-[`RtkParticipantsAudio`](/realtime/realtimekit/components-library/#rtkparticipantsaudio) is the audio component that helps you listen other participants in the session.<br/>
-[`RtkDialogManager`](/realtime/realtimekit/components-library/#rtkdialogmanager) is the dialog-manager component that shows the dialogs for the session.<br/>
+[`RtkHeader`](/realtime/realtimekit/ui-kit/component-library/#rtkheader) is the header component that shows the session name and the session controls.<br/>
+[`RtkStage`](/realtime/realtimekit/ui-kit/component-library/#rtkstage) is the container component that contains the grid and sidebar components.<br/>
+[`RtkGrid`](/realtime/realtimekit/ui-kit/component-library/#rtkgrid) is the grid component that shows the participants in the session.<br/>
+[`RtkSidebar`](/realtime/realtimekit/ui-kit/component-library/#rtksidebar) is the sidebar component that shows the sidebar, in which chat, polls content shows up.<br/>
+[`RtkControlbar`](/realtime/realtimekit/ui-kit/component-library/#rtkcontrolbar) is the controlbar component that shows the controls, such as camera, microphone, etc.<br/>
+[`RtkNotifications`](/realtime/realtimekit/ui-kit/component-library/#rtknotifications) is the notifications component that shows the notifications for the session.<br/>
+[`RtkParticipantsAudio`](/realtime/realtimekit/ui-kit/component-library/#rtkparticipantsaudio) is the audio component that helps you listen other participants in the session.<br/>
+[`RtkDialogManager`](/realtime/realtimekit/ui-kit/component-library/#rtkdialogmanager) is the dialog-manager component that shows the dialogs for the session.<br/>
 
-You can split all of these components further. To see more such components, please refer to our [components library](/realtime/realtimekit/components-library/).
+You can split all of these components further. To see more such components, please refer to our [components library](/realtime/realtimekit/ui-kit/component-library/).
 
 We have our UI Kit open source on GitHub, you can find it [here](https://github.com/cloudflare/realtimekit-ui).
 

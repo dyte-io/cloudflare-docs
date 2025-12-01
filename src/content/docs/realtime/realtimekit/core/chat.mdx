@@ -10,10 +10,6 @@ import { Tabs, TabItem } from "~/components";
 
 This guide explains how to send and receive chat messages in a meeting using Cloudflare RealtimeKit.
 
-:::note[Prerequisites]
-This page builds upon the [Render Default Meeting UI](/realtime/realtimekit/render-default-meeting-ui/) guide and [Build Your Own UI](/realtime/realtimekit/build-your-own-ui/). Make sure you've read those first.
-:::
-
 ## Introduction
 
 There are three types of messages that can be sent in chat:
@@ -711,7 +707,7 @@ You can programmatically retrieve all chat messages of a RealtimeKit session in 
 
 ### Get chat download URL
 
-To get the chat download URL, make an HTTP `GET` request to the Chat Replay API endpoint. The API returns:
+To get the chat download URL, make an HTTP `GET` request to the [Chat Replay API endpoint](/api/resources/realtime_kit/subresources/sessions/methods/get_session_chat/). The API returns:
 
 ```json
 {
@@ -726,7 +722,7 @@ To get the chat download URL, make an HTTP `GET` request to the Chat Replay API 
 - **`chat_download_url`** - A URL that allows you to download the entire chat dump of a session in CSV format from AWS S3
 - **`chat_download_url_expiry`** - The expiry timestamp of the `chat_download_url`. If the URL expires, call this endpoint again to obtain a new download URL
 
-For details on the Chat Replay API endpoint, refer to the [Realtime Kit API documentation](/api/resources/realtime_kit/).
+For details on the Chat Replay API endpoint, refer to the [Realtime Kit API documentation](/api/resources/realtime_kit/subresources/sessions/methods/get_session_chat/).
 
 ### Download the chat dump file
 

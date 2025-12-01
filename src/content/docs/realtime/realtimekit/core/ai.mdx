@@ -16,7 +16,7 @@ RealtimeKit's meeting transcription allows you to transcribe your RealtimeKit me
 
 You can control whether a participant's audio will be transcribed using the `transcription_enabled` flag in the participant's preset. All participants with `transcription_enabled` turned on in their preset will be able to generate transcripts in real-time in a RealtimeKit meeting.
 
-You can create a new preset on the Developer Portal or using the [REST API](/realtime/api/).
+Follow the [Preset Creation Guide](/realtime/realtimekit/concepts/preset/) to create a new preset.
 
 ### Configure transcription behavior
 
@@ -137,7 +137,7 @@ In the example above, `isPartialTranscript` is `true`, indicating the transcript
 
 You can configure a webhook with the `meeting.transcript` event enabled to receive the meeting transcript after the meeting has ended. You can do this either on the Developer Portal or using the REST API.
 
-For webhook format details, refer to [Webhooks](/realtime/realtimekit/webhooks/).
+For webhook format details, refer to [Webhooks](/api/resources/realtime_kit/subresources/webhooks/).
 
 ### Fetch the meeting transcript
 
@@ -162,8 +162,8 @@ Field descriptions:
 
 Once you have configured a preset and a webhook according to the instructions above, you can proceed to test whether meeting transcription is working for your organization:
 
-1. [Create a meeting](/realtime/api/)
-2. [Add a participant](/realtime/api/) to the meeting. Make sure that the preset you use was configured according to this guide
+1. [Create a meeting](/realtime/realtimekit/concepts/meeting/)
+2. [Add a participant](/realtime/realtimekit/concepts/participant/) to the meeting. Make sure that the preset you use was configured according to this guide
 3. Join the meeting with the `authToken` you just obtained. As you unmute and speak, your speech should be getting transcribed in real-time for all the participants in the meeting
 4. Once the meeting ends, you will receive a webhook with the event `meeting.transcript`. The body of this webhook will consist of the entire meeting transcript
 
@@ -271,5 +271,4 @@ If you need to generate a summary after the meeting has ended, you can trigger t
 
 Explore additional capabilities:
 
-- [Webhooks](/realtime/realtimekit/webhooks/) - Set up webhooks for AI events
-- [API](/realtime/api/) - Complete API reference for transcription and summarization
+- [Webhooks](/api/resources/realtime_kit/subresources/webhooks/) - Set up webhooks for AI events

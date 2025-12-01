@@ -7,12 +7,12 @@ sidebar:
 ---
 
 import { Tabs, TabItem, Render } from "~/components";
-import RTKSDKSelector from '~/components/realtimekit/RTKSDKSelector/RTKSDKSelector.astro';
-import RTKCodeSnippet from '~/components/realtimekit/RTKCodeSnippet/RTKCodeSnippet.astro';
+import RTKSDKSelector from "~/components/realtimekit/RTKSDKSelector/RTKSDKSelector.astro";
+import RTKCodeSnippet from "~/components/realtimekit/RTKCodeSnippet/RTKCodeSnippet.astro";
 
 The default RealtimeKit Meeting UI component gives you a complete meeting experience out of the box, with all the essential features built in. Just drop it into your app and you are ready to go.
 
-<RTKSDKSelector/>
+<RTKSDKSelector />
 
 <RTKCodeSnippet id="web-react">
 To **Initialise your SDK**, add the following code to your React application:
@@ -26,24 +26,27 @@ export default function App() {
     initMeeting({ authToken: '<auth-token>' });
   }, []);
 
-  return <div></div>
-} 
-```
-Use the [Create Participant API](/api/resources/realtime_kit/#create-a-participant) to fetch the `authToken`.
+return <div></div>
+}
 
-Now, **Create a meeting component** using the `RTKMeeting` component and the `useRealtimeKitMeeting` hook (this hook provides access to the meeting object that contains all the meeting state and methods).
+````
+Use the [Create Participant API](/api/resources/realtime_kit/subresources/meetings/methods/add_participant/) to fetch the `authToken`.
+
+Now, **Create a meeting component** using the `RtkMeeting` component and the `useRealtimeKitMeeting` hook (this hook provides access to the meeting object that contains all the meeting state and methods).
 ```ts title="MyMeetingUI.tsx"
 import { useRealtimeKitMeeting } from '@cloudflare/realtimekit-react';
-import { RTKMeeting } from '@cloudflare/realtimekit-react-ui';
+import { RtkMeeting } from '@cloudflare/realtimekit-react-ui';
 
 export default function MyMeetingUI() {
   const { meeting } = useRealtimeKitMeeting();
   return (
-    <RTKMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
+    <RtkMeeting mode="fill" meeting={meeting} showSetupScreen={true} />
   );
-} 
-```
-**Use the Meeting component** like so: 
+}
+````
+
+**Use the Meeting component** like so:
+
 ```ts title="App.tsx"
 import { useEffect } from 'react';
 import { useRealtimeKitClient, RealtimeKitProvider } from '@cloudflare/realtimekit-react';
@@ -63,6 +66,7 @@ export default function App() {
   );
 }
 ```
+
 </RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-web-components">
@@ -90,6 +94,7 @@ Use the `rtk-meeting` component to **display the meeting UI**.
 **Initialise the SDK** using the `authToken` and pass the meeting prop to the UI component to connect to the meeting.
 
 Use the [Create Participant API](/api/resources/realtime_kit/#create-a-participant) to fetch the `authToken`.
+
 ```html
 <script>
 	const authToken = <auth-token>
@@ -101,8 +106,8 @@ Use the [Create Participant API](/api/resources/realtime_kit/#create-a-participa
 	});
 </script>
 ```
-</RTKCodeSnippet>
 
+</RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-angular">
 **Load the RTKComponentsModule** into your app module.
@@ -111,20 +116,20 @@ This is typically the app.module.ts file.
 This allows you to use the UI components in your component HTML files.
 
 ```ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RTKComponentsModule } from '@cloudflare/realtimekit-angular';
-import { AppComponent } from './app.component';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RTKComponentsModule } from "@cloudflare/realtimekit-angular";
+import { AppComponent } from "./app.component";
 
 @NgModule({
-declarations: [AppComponent],
-imports: [BrowserModule, RTKComponentsModule],
-providers: [],
-bootstrap: [AppComponent],
+	declarations: [AppComponent],
+	imports: [BrowserModule, RTKComponentsModule],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-export class AppModule {};
-
+export class AppModule {}
 ```
+
 _Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as true in your tsconfig.json.
 
 ```ts
@@ -135,30 +140,35 @@ _Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as tru
 }
 ```
 
-**Load the RTKMeeting component** to your template file (component.html).
+**Load the RtkMeeting component** to your template file (component.html).
+
 ```html
 <rtk-meeting #myid></rtk-meeting>
 ```
+
 **Initialise the Meeting**
+
 ```ts
-	class AppComponent {å
-	title = 'MyProject';
-	@ViewChild('myid') meetingComponent: RTKMeeting;
+class AppComponent {
+	å;
+	title = "MyProject";
+	@ViewChild("myid") meetingComponent: RtkMeeting;
 	rtkMeeting: RealtimeKitClient;
 
 	async ngAfterViewInit() {
 		const meeting = await RealtimeKitClient.init({
-		authToken: '<auth-token>',
+			authToken: "<auth-token>",
 		});
 		meeting.join();
 		this.rtkMeeting = meeting;
 		if (this.meetingComponent) this.meetingComponent.meeting = meeting;
 	}
-	}
+}
 ```
-Use the [Create Participant API](/api/resources/realtime_kit/#create-a-participant) to fetch the `authToken`.
-</RTKCodeSnippet>
 
+Use the [Create Participant API](/api/resources/realtime_kit/#create-a-participant) to fetch the `authToken`.
+
+</RTKCodeSnippet>
 
 ## Next steps
 
@@ -170,8 +180,8 @@ While the default UI provides a complete meeting experience, you may want to bui
 
 To build your own custom meeting UI, follow these guides in order:
 
-1. **[UI Kit Components Library](/realtime/realtimekit/components-library/)** - Browse available components and their visual representations
-2. **[UI Kit States](/realtime/realtimekit/ui-kit-states/)** - Learn how components communicate and synchronize with each other
-3. **[Peer Lifecycle](/realtime/realtimekit/peer-lifecycle/)** - Understand different meeting states and transitions
-4. **[Meeting Object Explained](/realtime/realtimekit/meeting-object-explained/)** - Access meeting data and participant information using the Core SDK
-5. **[Build Your Own UI](/realtime/realtimekit/build-your-own-ui/)** - Put everything together to create a custom meeting interface
+1. **[UI Kit Components Library](/realtime/realtimekit/ui-kit/component-library/)** - Browse available components and their visual representations
+2. **[UI Kit Meeting Lifecycle](/realtime/realtimekit/ui-kit/meeting-lifecycle/)** - Lifecycle of a meeting and how components communicate and synchronize with each other
+3. **[Session Lifecycle](/realtime/realtimekit/concepts/session-lifecycle/)** - Understand different peer states and transitions
+4. **[Meeting Object Explained](/realtime/realtimekit/core/meeting-object-explained/)** - Access meeting data and participant information using the Core SDK
+5. **[Build Your Own UI](/realtime/realtimekit/ui-kit/build-your-own-ui/)** - Put everything together to create a custom meeting interface

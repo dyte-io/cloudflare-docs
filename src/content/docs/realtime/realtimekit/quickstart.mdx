@@ -37,52 +37,43 @@ Select a framework based on the platform you are building for.
 
 <RTKCodeSnippet id="web-react">
 	Please install the following dependancies into your project repository:
-	
-	```bash
-	npm i @cloudflare/realtimekit-react @cloudflare/realtimekit-react-ui
-	```
-	
-	_Optional:_ You can also build on top of our ready-made template:
-	
-	```bash 
-	git clone https://github.com/cloudflare/realtimekit-web-examples.git
-	cd realtimekit-web-examples/react-examples/examples/default-meeting-ui
-	```
+	```bash npm i @cloudflare/realtimekit-react @cloudflare/realtimekit-react-ui
+	``` _Optional:_ You can also build on top of our ready-made template: ```bash
+	git clone https://github.com/cloudflare/realtimekit-web-examples.git cd
+	realtimekit-web-examples/react-examples/examples/default-meeting-ui ```
 </RTKCodeSnippet>
-
 
 <RTKCodeSnippet id="web-web-components">
 	Please install the following dependencies into your project repository:
 
-	```bash
-	npm i @cloudflare/realtimekit-web @cloudflare/realtimekit-ui
-	```
+    ```bash
+    npm i @cloudflare/realtimekit-web @cloudflare/realtimekit-ui
+    ```
 
-	_Optional:_ You can also build on top of our ready-made template:
+    _Optional:_ You can also build on top of our ready-made template:
 
-	```bash
-	git clone https://github.com/cloudflare/realtimekit-web-examples.git
-	cd realtimekit-web-examples/html-examples/examples/default-meeting-ui
-	```
+    ```bash
+    git clone https://github.com/cloudflare/realtimekit-web-examples.git
+    cd realtimekit-web-examples/html-examples/examples/default-meeting-ui
+    ```
+
 </RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-angular">
 	Please install the following dependencies into your project repository:
 
-	```bash
-	npm i @cloudflare/realtimekit-angular @cloudflare/realtimekit-angular-ui
-	```
+    ```bash
+    npm i @cloudflare/realtimekit-angular @cloudflare/realtimekit-angular-ui
+    ```
 
-	_Optional:_ You can also build on top of our ready-made template:
+    _Optional:_ You can also build on top of our ready-made template:
 
-	```bash
-	git clone https://github.com/cloudflare/realtimekit-web-examples.git
-	cd realtimekit-web-examples/angular-examples/examples/default-meeting-ui
-	```
+    ```bash
+    git clone https://github.com/cloudflare/realtimekit-web-examples.git
+    cd realtimekit-web-examples/angular-examples/examples/default-meeting-ui
+    ```
+
 </RTKCodeSnippet>
-
-
-
 
 ### Create a RealtimeKit App
 
@@ -144,56 +135,61 @@ Learn more about creating participants in the [API reference](/api/resources/rea
 
 You can now add the RealtimeKit Client SDK to your application.
 
-
 <RTKCodeSnippet id="web-react">
 Inside your react application, add the following code:
 ```ts
 
-import { useEffect } from 'react';
-import { useRealtimeKitClient, useRealtimeKitMeeting, RealtimeKitProvider } from '@cloudflare/realtimekit-react';
-import { RTKMeeting } from '@cloudflare/realtimekit-react-ui';
+import { useEffect } from "react";
+import {
+	useRealtimeKitClient,
+	useRealtimeKitMeeting,
+	RealtimeKitProvider,
+} from "@cloudflare/realtimekit-react";
+import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
 
 export default function App() {
   const [meeting, initMeeting] = useRealtimeKitClient();
 
-  useEffect(() => {
-    initMeeting({ authToken: '<auth-token>' });
-  }, []);
+useEffect(() => {
+initMeeting({ authToken: '<auth-token>' });
+}, []);
 
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <MyMeetingUI />
-    </RealtimeKitProvider>
-  );
+return (
+<RealtimeKitProvider value={meeting}>
+<MyMeetingUI />
+</RealtimeKitProvider>
+);
 }
 
 export default function MyMeetingUI() {
   const { meeting } = useRealtimeKitMeeting();
   return (
-    <RTKMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
+    <RtkMeeting mode="fill" meeting={meeting} showSetupScreen={true} />
   );
 
-} 
+}
 
-```
+````
 Replace `<auth-token>` with the authToken obtained from the previous step.
 
 Run the application and navigate to the meeting page to see the RealtimeKit Client SDK in action.
 ```bash
 npm run dev
-```
+````
 
 _Optional:_ If you are using our ready-made template, run the following command to start the application:
+
 ```bash
 npm i -g vite && npm run dev
 ```
+
 Open the app in your browser. To join the meeting, append your auth token to the preview URL:
 
-```bash 
+```bash
 http://localhost:5173?authToken=<auth_token>
 ```
-</RTKCodeSnippet>
 
+</RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-web-components">
 Inside your html application, add the following code:
@@ -214,6 +210,7 @@ Inside your html application, add the following code:
 
     <!-- Import RealtimeKit Core via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/browser.js"></script>
+
   </head>
   <body>
     <rtk-meeting id="my-meeting" show-setup-screen="true" />
@@ -236,97 +233,100 @@ Inside your html application, add the following code:
         document.getElementById('my-meeting').meeting = meeting;
       });
     </script>
+
   </body>
 </html>
 
-```
+````
 Replace `<auth-token>` with the authToken obtained from the previous step.
 
 Run the application and navigate to the meeting page to see the RealtimeKit Client SDK in action.
 ```bash
 npm run dev
-```
+````
 
 _Optional:_ If you are using our ready-made template, run the following command to start the application:
+
 ```bash
 npm i -g vite && npm run dev
 ```
+
 Open the app in your browser. To join the meeting, append your auth token to the preview URL:
 
-```bash 
+```bash
 http://localhost:5173?authToken=<auth_token>
 ```
+
 </RTKCodeSnippet>
-
-
 
 <RTKCodeSnippet id="web-angular">
 	Load the RTKComponentsModule into your app module. This is typically the app.module.ts file.
 	This allows you to use the UI components in your component HTML files.
 
-	```ts
-	import { NgModule } from '@angular/core';
-	import { BrowserModule } from '@angular/platform-browser';
-	import { RTKComponentsModule } from '@cloudflare/realtimekit-angular';
-	import { AppComponent } from './app.component';
+    ```ts
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { RTKComponentsModule } from '@cloudflare/realtimekit-angular';
+    import { AppComponent } from './app.component';
 
-	@NgModule({
-	declarations: [AppComponent],
-	imports: [BrowserModule, RTKComponentsModule],
-	providers: [],
-	bootstrap: [AppComponent],
-	})
-	export class AppModule {};
-	
-	```
-	_Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as true in your tsconfig.json.
+    @NgModule({
+    declarations: [AppComponent],
+    imports: [BrowserModule, RTKComponentsModule],
+    providers: [],
+    bootstrap: [AppComponent],
+    })
+    export class AppModule {};
 
-	```ts
-	{
-		"compilerOptions": {
-			"allowSyntheticDefaultImports": true
-		}
-	}
-	```
+    ```
+    _Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as true in your tsconfig.json.
 
-	Load the RTKMeeting component to your template file (component.html).
+    ```ts
+    {
+    	"compilerOptions": {
+    		"allowSyntheticDefaultImports": true
+    	}
+    }
+    ```
 
-	```html
-	<rtk-meeting #myid></rtk-meeting>
-	```
-	Initialise the Meeting
+    Load the RtkMeeting component to your template file (component.html).
 
-	```ts
-		class AppComponent {
-		title = 'MyProject';
-		@ViewChild('myid') meetingComponent: RTKMeeting;
-		rtkMeeting: RealtimeKitClient;
+    ```html
+    <rtk-meeting #myid></rtk-meeting>
+    ```
+    Initialise the Meeting
 
-		async ngAfterViewInit() {
-			const meeting = await RealtimeKitClient.init({
-			authToken: '<auth-token>',
-			});
-			meeting.join();
-			this.rtkMeeting = meeting;
-			if (this.meetingComponent) this.meetingComponent.meeting = meeting;
-		}
-		}
-	```
+    ```ts
+    	class AppComponent {
+    	title = 'MyProject';
+    	@ViewChild('myid') meetingComponent: RtkMeeting;
+    	rtkMeeting: RealtimeKitClient;
 
-	Replace `<auth-token>` with the authToken obtained from the previous step.
+    	async ngAfterViewInit() {
+    		const meeting = await RealtimeKitClient.init({
+    		authToken: '<auth-token>',
+    		});
+    		meeting.join();
+    		this.rtkMeeting = meeting;
+    		if (this.meetingComponent) this.meetingComponent.meeting = meeting;
+    	}
+    	}
+    ```
 
-	Run the application and navigate to the meeting page to see the RealtimeKit Client SDK in action.
-	```bash
-	npm run dev
-	```
+    Replace `<auth-token>` with the authToken obtained from the previous step.
 
-	_Optional:_ If you are using our ready-made template, run the following command to start the application:
-	```bash
-	npm i -g vite && npm run dev
-	```
-	Open the app in your browser. To join the meeting, append your auth token to the preview URL:
+    Run the application and navigate to the meeting page to see the RealtimeKit Client SDK in action.
+    ```bash
+    npm run dev
+    ```
 
-	```bash 
-	http://localhost:5173?authToken=<auth_token>
-	```
+    _Optional:_ If you are using our ready-made template, run the following command to start the application:
+    ```bash
+    npm i -g vite && npm run dev
+    ```
+    Open the app in your browser. To join the meeting, append your auth token to the preview URL:
+
+    ```bash
+    http://localhost:5173?authToken=<auth_token>
+    ```
+
 </RTKCodeSnippet>

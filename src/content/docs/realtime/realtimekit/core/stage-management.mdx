@@ -10,10 +10,6 @@ import { Tabs, TabItem } from "~/components";
 
 This guide explains how to use stage management APIs for Interactive Livestream (LHLS) and Webinar (WebRTC) use cases in Cloudflare RealtimeKit.
 
-:::note[Prerequisites]
-This page builds upon the [Render Default Meeting UI](/realtime/realtimekit/render-default-meeting-ui/) guide and [Build Your Own UI](/realtime/realtimekit/build-your-own-ui/). Make sure you've read those first.
-:::
-
 ## Overview
 
 Instead of a traditional publish-subscribe model, where a user can publish their media and others can choose to subscribe, RealtimeKit comes with an optional managed configuration. In this managed configuration, a less privileged user can be configured with a default behavior to not publish media. The user can then request permission to be allowed to publish their media, where a privileged user can choose to grant or deny access.
