@@ -29,7 +29,7 @@ Audio signal pathway within an audio file that carries a specific sound source. 
 - stereo (default)
 - mono
 
-You can modify the configs by specifying it in the `audio_config` field in the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/create/), for example:
+You can modify the configs by specifying it in the `audio_config` field in the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/), for example:
 
 ```json
 {
@@ -42,6 +42,6 @@ You can modify the configs by specifying it in the `audio_config` field in the [
 
 ## Download Audio Files
 
-The audio file for your recording is generated only if you passed the `audio_config` parameters in the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/create/).
+The audio file for your recording is generated only if you passed the `audio_config` parameters in the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/).
 
-When the recording is completed, you can use the `audio_download_url` provided in the response body of the [Fetch details of a recording API](/api/resources/realtime_kit/subresources/recordings/methods/get/) to download and export the audio file.
+When the recording is completed, you can use the `audio_download_url` provided in the response body of the [Fetch details of a recording API](/api/resources/realtime_kit/subresources/recordings/methods/get_one_recording/) to download and export the audio file.

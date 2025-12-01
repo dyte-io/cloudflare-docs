@@ -18,7 +18,7 @@ support the following codecs:
   resolution, and Vorbis codec audio in WebM container.
 
 You can change the codec by specifying the codec in the `video_config` field in
-the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/create/), for
+the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/), for
 example:
 
 ```json
@@ -31,6 +31,6 @@ example:
 
 ## Download Video Files
 
-The video file for your recording is generated only if you passed the `video_config` parameters in the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/create/).
+The video file for your recording is generated only if you passed the `video_config` parameters in the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/).
 
-When the recording is completed, you can use the `downloadUrl` provided in the response body of the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/create/) to download and export the video file.
+When the recording is completed, you can use the `downloadUrl` provided in the response body of the [Start Recording API](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) to download and export the video file.
