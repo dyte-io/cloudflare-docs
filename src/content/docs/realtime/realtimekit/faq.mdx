@@ -8,7 +8,11 @@ sidebar:
 import { Details } from "~/components";
 
 <Details header="How can I generate the Cloudflare API Token?">
-Coming Soon!
+To use RealtimeKit APIs, you must have a [Cloudflare account](https://dash.cloudflare.com).
+
+Follow the [Create API token guide](/fundamentals/api/get-started/create-token/) to create a new token via the [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens).
+When configuring permissions, ensure that **Realtime** / **Realtime Admin** permissions are selected.
+Configure any additional [access policies and restrictions](/fundamentals/api/reference/permissions/) as needed for your use case.
 </Details>
 
 ### Meetings 
@@ -87,7 +91,10 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{AP
 ### Presets
 
 <Details header="Do I need a new preset for every meeting or participant?">
-Coming Soon!
+Presets are **re-usable** set of rules and configurations that are defined at the App level. You can use the same preset for multiple participants.
+
+ 
+Read more about presets [here](/realtime/realtimekit/concepts/preset/).
 </Details>
 
 ### Client Side SDKs
