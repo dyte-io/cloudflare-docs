@@ -36,7 +36,7 @@ Select a framework based on the platform you are building for.
 <SDKSelector />
 
 <CodeSnippet id="web-react">
-	Please install the following dependancies into your project repository:
+	Please install the following dependencies into your project repository:
 	
 	```bash
 	npm i @cloudflare/realtimekit-react @cloudflare/realtimekit-react-ui
@@ -170,7 +170,7 @@ export default function App() {
 export default function MyMeetingUI() {
   const { meeting } = useRealtimeKitMeeting();
   return (
-    <RtkMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
+    <RtkMeeting mode="fill" meeting={meeting} showSetupScreen={true} />
   );
 
 } 
