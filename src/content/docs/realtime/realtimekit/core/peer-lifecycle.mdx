@@ -1,0 +1,37 @@
+---
+pcx_content_type: navigation
+title: Peer Lifecycle
+slug: realtime/realtimekit/core/peer-lifecycle
+sidebar:
+  order: 2
+---
+
+When a user (participant) connects to a meeting, they become a **peer** in the meeting session.
+A peer then moves through several states in the session based on the preset, connection state, and actions by the user or the host.
+
+## Lifecycle of a Peer in a Session
+
+![Peer Lifecycle In a Session](~/assets/images/realtime/realtimekit/peer-lifecycle.svg)
+
+Here’s how the peer lifecycle works:
+
+1. **Initialization state**: When the SDK is initialized, the participant connects to the meeting session as a peer.
+   This state can be used for pre-join experiences, such as previewing audio and video and editing the display name before joining.
+
+2. **Join intent**: When the peer decides to join, one of the following occurs:
+   - If waitlisting is enabled, the peer is placed in the waiting room.
+   - If the peer is allowed to enter directly, they join the session.
+
+3. **Waitlisted**: The peer remains in the waiting room until a host peer approves or denies their entry.
+   - If their entry is approved, they enter the meeting session.
+   - If their entry is denied, they move to the rejected state. To try joining again, they must start from initializing the SDK.
+
+4. **During the session**: The peer can see and interact with other peers in the meeting session.
+
+5. **Session termination**: The session terminates for the peer and they exit when:
+   - The peer voluntarily leaves the session or the meeting session ends.
+   - The peer is removed from the meeting session by a host.
+   - The peer experiences a network disconnection and SDK cannot reconnect them after multiple attempts.
+
+The [prebuilt](/realtime/realtimekit/ui-kit/) experience that the UIKit provides handles the peer lifecycle for you and shows the corresponding UI for each state.
+If you want to build a fully custom experience that matches your application requirements and design, you can use the Core SDK and handle the peer lifecycle directly in your code.
