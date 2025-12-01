@@ -31,15 +31,15 @@ export default function App() {
 ```
 Use the [Create Participant API]() to fetch the `authToken`.
 
-Now, **Create a meeting component** using the `RTKMeeting` component and the `useRealtimeKitMeeting` hook (this hook provides access to the meeting object that contains all the meeting state and methods).
+Now, **Create a meeting component** using the `RtkMeeting` component and the `useRealtimeKitMeeting` hook (this hook provides access to the meeting object that contains all the meeting state and methods).
 ```ts title="MyMeetingUI.tsx"
 import { useRealtimeKitMeeting } from '@cloudflare/realtimekit-react';
-import { RTKMeeting } from '@cloudflare/realtimekit-react-ui';
+import { RtkMeeting } from '@cloudflare/realtimekit-react-ui';
 
 export default function MyMeetingUI() {
   const { meeting } = useRealtimeKitMeeting();
   return (
-    <RTKMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
+    <RtkMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
   );
 } 
 ```
@@ -135,7 +135,7 @@ _Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as tru
 }
 ```
 
-**Load the RTKMeeting component** to your template file (component.html).
+**Load the RtkMeeting component** to your template file (component.html).
 ```html
 <rtk-meeting #myid></rtk-meeting>
 ```
@@ -143,7 +143,7 @@ _Optional:_ If you are using TypeScript, set allowSyntheticDefaultImports as tru
 ```ts
 	class AppComponent {å
 	title = 'MyProject';
-	@ViewChild('myid') meetingComponent: RTKMeeting;
+	@ViewChild('myid') meetingComponent: RtkMeeting;
 	rtkMeeting: RealtimeKitClient;
 
 	async ngAfterViewInit() {

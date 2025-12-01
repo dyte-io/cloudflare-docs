@@ -151,7 +151,7 @@ Inside your react application, add the following code:
 
 import { useEffect } from 'react';
 import { useRealtimeKitClient, useRealtimeKitMeeting, RealtimeKitProvider } from '@cloudflare/realtimekit-react';
-import { RTKMeeting } from '@cloudflare/realtimekit-react-ui';
+import { RtkMeeting } from '@cloudflare/realtimekit-react-ui';
 
 export default function App() {
   const [meeting, initMeeting] = useRealtimeKitClient();
@@ -170,7 +170,7 @@ export default function App() {
 export default function MyMeetingUI() {
   const { meeting } = useRealtimeKitMeeting();
   return (
-    <RTKMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
+    <RtkMeeting mode="fill" meeting={meeting} showSetupScreen={false} />
   );
 
 } 
@@ -289,7 +289,7 @@ http://localhost:5173?authToken=<auth_token>
 	}
 	```
 
-	Load the RTKMeeting component to your template file (component.html).
+	Load the RtkMeeting component to your template file (component.html).
 
 	```html
 	<rtk-meeting #myid></rtk-meeting>
@@ -299,7 +299,7 @@ http://localhost:5173?authToken=<auth_token>
 	```ts
 		class AppComponent {
 		title = 'MyProject';
-		@ViewChild('myid') meetingComponent: RTKMeeting;
+		@ViewChild('myid') meetingComponent: RtkMeeting;
 		rtkMeeting: RealtimeKitClient;
 
 		async ngAfterViewInit() {
