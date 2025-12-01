@@ -17,7 +17,7 @@ interface RTKIconProps extends Omit<SVGProps<SVGSVGElement>, "children"> {
 	className?: string;
 }
 
-export function RTKIcon({ name, className, onClick, ...rest }: RTKIconProps) {
+function RTKIcon({ name, className, onClick, ...rest }: RTKIconProps) {
 	const icon = ICONS[name];
 
 	if (!icon) {
@@ -40,3 +40,5 @@ export function RTKIcon({ name, className, onClick, ...rest }: RTKIconProps) {
 		</div>
 	);
 }
+
+export default RTKIcon;
