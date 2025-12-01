@@ -27,24 +27,18 @@ You can configure storage configs for RealtimeKit Recordings in the following wa
 
 You can specify storage configuration details using Developer Portal for all meetings.
 
-1. In the Developer Portal, go to Recordings.
+1. In the Cloudflare [RealtimeKit Dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to Recordings.
 2. Click **Setup Storage**.
 3. Specify the details for your cloud provider. We support transferring
-   recordings to AWS, Azure, DigitalOcean, and Google Cloud Storage (GCS) buckets.
+   recordings to Cloudflare R2, AWS S3, Azure, DigitalOcean, and Google Cloud Storage (GCS) buckets.
 
-<img
-  src="/static/guides/recording-storage.png"
-  width="600"
-  height="300"
-  alt="recording-storage"
-  className="record-storage"
-/>
+![Recording Storage Screenshot](~/assets/images/realtime/realtimekit/recording-storage.png)
 <br />
 
 :::note
 
 If you have specified storage configuration in the
-[Start Recording](/api/?v=v2#/operations/start_recording) APIs, it will take
+[Start Recording](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) APIs, it will take
 precedence and override the storage details configured in the Developer Portal.
 
 :::
@@ -55,12 +49,12 @@ To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring t
 
 This allows for the most granular level of control, and lets you specify a
 storage_config for a specific
-[recording started](/api/?v=v2#/operations/start_recording) on a meeting.
+[recording started](/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) on a meeting.
 
 ```bash
 curl --request POST \
-  --url https://api.realtime.cloudflare.com/v2/recordings \
-  --header 'Authorization: Basic <api_authorization_token>' \
+  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings \
+  --header 'Authorization: Bearer <api_authorization_token>' \
   --header 'Content-Type: application/json' \
   --data '{
   "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
@@ -80,6 +74,20 @@ To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring t
 ## Supported Cloud Providers
 
 Currently, the following cloud providers are supported:
+
+### Cloudflare R2
+
+To transfer recordings to Cloudflare R2, set the following fields in
+the `storage_config` parameter:
+
+- Type: Specify `r2`.
+- Access Key: Enter your R2 access key ID. For more information, see [Create API tokens](/r2/api/tokens/).
+- Bucket: Enter the name of your R2 bucket.
+- (Optional) Path: Specify the path to a sub-folder where recordings should be
+  transferred. If this parameter is not passed, recordings will be transferred
+  to the root folder of the bucket.
+- Secret: Enter your R2 secret access key.
+- Account ID: Enter your Cloudflare account ID.
 
 ### AWS S3
 
