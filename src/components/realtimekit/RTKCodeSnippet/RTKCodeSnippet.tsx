@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import { useFramework } from "../hooks/useFramework";
 
-interface CodeSnippetProps {
+interface RTKCodeSnippetProps {
 	id: string; // e.g. "web-react"
 	children: ReactNode; // MDX content
 }
 
-export default function CodeSnippet({ id, children }: CodeSnippetProps) {
+export default function RTKCodeSnippet({ id, children }: RTKCodeSnippetProps) {
 	const { platform, framework } = useFramework();
 
 	if (!framework) return null;

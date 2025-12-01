@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 
-type PillProps = {
+type RTKPillProps = {
 	children: ReactNode;
 };
 
-export function RealtimePill({ children }: PillProps) {
+function RTKPill({ children }: RTKPillProps) {
 	return (
 		<span
 			style={{
@@ -21,3 +21,5 @@ export function RealtimePill({ children }: PillProps) {
 		</span>
 	);
 }
+
+export default RTKPill;

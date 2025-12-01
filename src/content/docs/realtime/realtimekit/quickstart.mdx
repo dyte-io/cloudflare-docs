@@ -6,8 +6,8 @@ sidebar:
 ---
 
 import { Tabs, TabItem, Steps, Render } from "~/components";
-import SDKSelector from "./components/SDKSelector/SDKSelector.astro";
-import CodeSnippet from "./components/CodeSnippet/CodeSnippet.astro";
+import RTKSDKSelector from "~/components/realtimekit/RTKSDKSelector/RTKSDKSelector.astro";
+import RTKCodeSnippet from "~/components/realtimekit/RTKCodeSnippet/RTKCodeSnippet.astro";
 
 ### Prerequisites
 
@@ -33,9 +33,9 @@ _Optional:_ Alternatively, [create tokens programmatically via the API](/fundame
 
 Select a framework based on the platform you are building for.
 
-<SDKSelector />
+<RTKSDKSelector />
 
-<CodeSnippet id="web-react">
+<RTKCodeSnippet id="web-react">
 	Please install the following dependancies into your project repository:
 	
 	```bash
@@ -48,10 +48,10 @@ Select a framework based on the platform you are building for.
 	git clone https://github.com/cloudflare/realtimekit-web-examples.git
 	cd realtimekit-web-examples/react-examples/examples/default-meeting-ui
 	```
-</CodeSnippet>
+</RTKCodeSnippet>
 
 
-<CodeSnippet id="web-web-components">
+<RTKCodeSnippet id="web-web-components">
 	Please install the following dependencies into your project repository:
 
 	```bash
@@ -64,9 +64,9 @@ Select a framework based on the platform you are building for.
 	git clone https://github.com/cloudflare/realtimekit-web-examples.git
 	cd realtimekit-web-examples/html-examples/examples/default-meeting-ui
 	```
-</CodeSnippet>
+</RTKCodeSnippet>
 
-<CodeSnippet id="web-angular">
+<RTKCodeSnippet id="web-angular">
 	Please install the following dependencies into your project repository:
 
 	```bash
@@ -79,7 +79,7 @@ Select a framework based on the platform you are building for.
 	git clone https://github.com/cloudflare/realtimekit-web-examples.git
 	cd realtimekit-web-examples/angular-examples/examples/default-meeting-ui
 	```
-</CodeSnippet>
+</RTKCodeSnippet>
 
 
 
@@ -145,7 +145,7 @@ Learn more about creating participants in the [API reference](/api/resources/rea
 You can now add the RealtimeKit Client SDK to your application.
 
 
-<CodeSnippet id="web-react">
+<RTKCodeSnippet id="web-react">
 Inside your react application, add the following code:
 ```ts
 
@@ -192,10 +192,10 @@ Open the app in your browser. To join the meeting, append your auth token to the
 ```bash 
 http://localhost:5173?authToken=<auth_token>
 ```
-</CodeSnippet>
+</RTKCodeSnippet>
 
 
-<CodeSnippet id="web-web-components">
+<RTKCodeSnippet id="web-web-components">
 Inside your html application, add the following code:
 ```html
 <!DOCTYPE html>
@@ -256,11 +256,11 @@ Open the app in your browser. To join the meeting, append your auth token to the
 ```bash 
 http://localhost:5173?authToken=<auth_token>
 ```
-</CodeSnippet>
+</RTKCodeSnippet>
 
 
 
-<CodeSnippet id="web-angular">
+<RTKCodeSnippet id="web-angular">
 	Load the RTKComponentsModule into your app module. This is typically the app.module.ts file.
 	This allows you to use the UI components in your component HTML files.
 
@@ -329,4 +329,4 @@ http://localhost:5173?authToken=<auth_token>
 	```bash 
 	http://localhost:5173?authToken=<auth_token>
 	```
-</CodeSnippet>
+</RTKCodeSnippet>

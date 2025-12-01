@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import icons from "./icons.json";
+import icons from "./RTKicons.json";
 
 const ICONS = icons as Record<
 	string,
@@ -9,15 +9,15 @@ const ICONS = icons as Record<
 	}
 >;
 
-export type IconName = keyof typeof ICONS;
+export type RTKIconName = keyof typeof ICONS;
 
-interface IconProps extends Omit<SVGProps<SVGSVGElement>, "children"> {
-	name: IconName;
+interface RTKIconProps extends Omit<SVGProps<SVGSVGElement>, "children"> {
+	name: RTKIconName;
 	onClick?: () => void;
 	className?: string;
 }
 
-export function Icon({ name, className, onClick, ...rest }: IconProps) {
+export function RTKIcon({ name, className, onClick, ...rest }: RTKIconProps) {
 	const icon = ICONS[name];
 
 	if (!icon) {

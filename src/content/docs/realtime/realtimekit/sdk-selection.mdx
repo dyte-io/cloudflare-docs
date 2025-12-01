@@ -5,8 +5,8 @@ slug: realtime/realtimekit/sdk-selection
 sidebar:
   order: 4
 ---
-import SDKSelector from './components/SDKSelector/SDKSelector.astro';
-import Pill from './components/Pill/Pill.astro';
+import RTKSDKSelector from '~/components/realtimekit/RTKSDKSelector/RTKSDKSelector.astro';
+import RTKPill from '~/components/realtimekit/RTKPill/RTKPill.astro';
 
 :::note
 If you haven't already, we recommend trying out our [demo app](https://demo.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
@@ -18,7 +18,7 @@ RealtimeKit provides two ways to build real-time media applications:
 
 **Core SDK**: Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
 
-**UI Kit**: <Pill>Recommended</Pill> UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
+**UI Kit**: <RTKPill>Recommended</RTKPill> UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
 
 > **Note:** When you use our UI Kit, you also get access to the core SDK with it, which can be used to build additional features based on your needs.
 
@@ -26,7 +26,7 @@ RealtimeKit provides two ways to build real-time media applications:
 ### Select you framework
 
 RealtimeKit support all the popular frameworks for web and mobile platforms. Please select the Platform and Framework that you are building on.
-<SDKSelector />
+<RTKSDKSelector />
 
 | Framework/Library                      | Core SDK                                                                                                   | UI Kit                                                                                                           | 
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | 
