@@ -10,7 +10,7 @@ import { Tabs, TabItem, Steps, Render } from "~/components";
 This guide explains how to use Cloudflare RealtimeKit SDKs to build fully custom real-time video UIs.
 
 :::note[Prerequisites]
-This page builds upon the [Initialize SDK](/realtime/realtimekit/core/) and [Render Default Meeting UI](/realtime/realtimekit/ui-kit/) & [UI Kit States](/realtime/realtimekit/ui-kit-states/) guides. Make sure you've read those first.
+This page builds upon the [Initialize SDK](/realtime/realtimekit/core/) and [Render Default Meeting UI](/realtime/realtimekit/ui-kit/) & [UI Kit States](/realtime/realtimekit/ui-kit/meeting-lifecycle/) guides. Make sure you've read those first.
 
 The code examples on this page assume you've already imported the necessary packages and initialized the SDK. We won't repeat those setup steps here for brevity.
 :::
@@ -22,13 +22,13 @@ The code examples on this page assume you've already imported the necessary pack
 
 ### Building Your Own UI, With UI Kit
 
-If default meeting component is not enough, and you need more control over layout or behavior, use [UI Kit components](/realtime/realtimekit/ui-kit-components/) to build a custom interface. The UI Kit provides pre-built components that sit on top of the Core SDK, letting you mix and match pieces while saving time compared to building from scratch.
+If default meeting component is not enough, and you need more control over layout or behavior, use [UI Kit components](/realtime/realtimekit/ui-kit/component-library/) to build a custom interface. The UI Kit provides pre-built components that sit on top of the Core SDK, letting you mix and match pieces while saving time compared to building from scratch.
 
 Building a custom UI requires managing participant audio, notifications, dialogs, component layout, and screen transitions yourself.
 
 <Tabs syncKey="realtimeKitFrameworkTabs">
 <TabItem label="Web Components">
-Similar to `rtk-meeting`, `rtk-ui-provider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit-states/) and syncs them with the UI Kit components.
+Similar to `rtk-meeting`, `rtk-ui-provider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit/meeting-lifecycle/) and syncs them with the UI Kit components.
 
 Unlike `rtk-meeting`, `rtk-ui-provider` allows you to pass any child components to it, if any one of the child components is a RealtimeKit component starting with `rtk-`, `rtk-ui-provider` will coordinate with the RealtimeKit component to sync the states.
 
@@ -197,7 +197,7 @@ You must include `rtk-notifications`, `rtk-participants-audio`, and `rtk-dialog-
 
 </TabItem>
 <TabItem label="React">
-Similar to `RtkMeeting`, `RtkUIProvider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit-states/) and syncs them with the UI Kit components.
+Similar to `RtkMeeting`, `RtkUIProvider`, another ui-kit component that acts as a provider, also listens to [states](/realtime/realtimekit/ui-kit/meeting-lifecycle/) and syncs them with the UI Kit components.
 
 Unlike `RtkMeeting`, `RtkUIProvider` allows you to pass any child components to it. If any one of the child components is a RealtimeKit component starting with `Rtk`, `RtkUIProvider` will coordinate with the RealtimeKit component to sync the states.
 

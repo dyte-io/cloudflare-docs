@@ -59,8 +59,8 @@ npm install @cloudflare/realtimekit-ui @cloudflare/realtimekit
 
 ### Set up the meeting
 
-1. Create a meeting room using the [Create Meeting API](/realtime/api/)
-2. Generate an `authToken` using the [Add Participant API](/realtime/api/). An `authToken` is a unique token that is used to identify a user in the meeting
+1. Create a meeting room using the [Create Meeting API](/api/resources/realtime_kit/subresources/meetings/methods/create/)
+2. Generate an `authToken` using the [Add Participant API](/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). An `authToken` is a unique token that is used to identify a user in the meeting
 3. Initialize the RealtimeKit client using `RealtimeKitClient.init({ authToken })`. It returns the meeting object
 4. Pass the meeting object to the UI Kit
 
@@ -268,4 +268,4 @@ Each icon in your custom icon pack JSON file should be defined as a key-value pa
 Explore additional customization options:
 
 - [Render Default Meeting UI](/realtime/realtimekit/ui-kit/) - Complete meeting experience out of the box
-- [Build Your Own UI](/realtime/realtimekit/ui-kit/) - Create custom meeting interfaces
+- [Build Your Own UI](/realtime/realtimekit/ui-kit/build-your-own-ui/) - Create custom meeting interfaces
