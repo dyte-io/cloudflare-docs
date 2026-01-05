@@ -16,7 +16,7 @@ entries:
         ```
       - Fixed an issue where awaiting `RealtimeKitClient.initMedia` did not return media tracks
 
-        Correct usage:
+        Example usage:
         ```ts
         const media = await RealtimeKitClient.initMedia({
           video : true,
@@ -26,14 +26,14 @@ entries:
         const { videoTrack, audioTrack } = media;
         ```
  
-      - Fixed an issue where an undefined variable, due to a race condition, in media retrieval, caused `TypeError: Cannot read properties of undefined (reading 'getValue')`.
+      - Fixed an issue where an undefined variable caused `TypeError: Cannot read properties of undefined (reading 'getValue')` in media retrieval due to a race condition.
 
   - publish_date: "2025-12-17"
     title: RealtimeKit Web Core 1.2.2
     description: |-
       **Fixes**
 
-      - Fixed an issue where camera switching between front and back cameras was not working on Android devices
+      - Fixed an issue where camera switching between front and rear cameras was not working on Android devices
       - Fixed device selection logic to prioritize media devices more effectively
       - Added PIP support for [Reactions](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/#reactions-1)
 
