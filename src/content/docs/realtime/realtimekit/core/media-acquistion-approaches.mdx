@@ -120,8 +120,8 @@ export default function App() {
     const [readyToInitializeSDK, setReadyToInitializeSDK] = useState(false);
 
     useEffect(() => {
-        if(!media){
-            const mediaFromSDK = RealtimeKitClient.initMedia({
+        async function initMediaWithoutSDKInitialization(){
+            const mediaFromSDK = await RealtimeKitClient.initMedia({
               video : true,
               audio: true,
             });
@@ -136,6 +136,9 @@ export default function App() {
                 // To mimic a real world scenario, we are setting it to true after 5 seconds
                 setReadyToInitializeSDK(true);
             }, 5000);
+        }
+        if(!media){
+            initMediaWithoutSDKInitialization();
         }
     }, [media]);
 
@@ -170,7 +173,7 @@ Initialize the media handler first using `RealtimeKitClient.initMedia()`, then p
 - Acquire media early without the complexity of managing SDK connection state.
 
 ```js
-    const mediaFromSDK = RealtimeKitClient.initMedia({
+    const mediaFromSDK = await RealtimeKitClient.initMedia({
         video : true,
         audio: true,
     });
@@ -208,7 +211,7 @@ class AppComponent {
 	rtkMeeting: RealtimeKitClient;
 
 	async ngAfterViewInit() {
-		    const mediaFromSDK = RealtimeKitClient.initMedia({
+		    const mediaFromSDK = await RealtimeKitClient.initMedia({
                 video : true,
                 audio: true,
             });
