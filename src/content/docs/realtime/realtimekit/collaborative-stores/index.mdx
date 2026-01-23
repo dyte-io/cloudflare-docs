@@ -25,28 +25,22 @@ To create a store:
 
 <RTKCodeSnippet id="web-react">
 
-    ```ts
-
+```ts
 const stores = useRealtimeKitSelector((m) => m.stores);
 const store = stores.create('myStore');
-
 ````
 </RTKCodeSnippet>
 <RTKCodeSnippet id="web-angular">
 
-    ```ts
-
+```ts
 const store = meeting.stores.create('myStore');
-
 ````
 
 </RTKCodeSnippet>
 <RTKCodeSnippet id="web-web-components">
 
-    ```ts
-
+```ts
 const store = meeting.stores.create('myStore');
-
 ````
 </RTKCodeSnippet>
 
@@ -129,10 +123,11 @@ For example, if the stored value is `['a', 'b']` and you call `update` with `['c
 You can attach event listeners on a store's key, which fire when the value changes.
 
 <RTKCodeSnippet id="web-react">
+
 ```ts
 const stores = useRealtimeKitSelector((m) => m.stores.stores);
 const store = stores.get('myStore');
-store.subscribe('key', (data) => { 
+store.subscribe('key', (data) => {
     console.log(data);
 });
 
@@ -142,12 +137,12 @@ console.log(data);
 });
 
 store.unsubscribe('key');
-
 ````
 
 </RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-angular">
+
 ```ts
 const { stores } = meeting.stores;
 const store = stores.get('myStore');
@@ -167,10 +162,11 @@ store.unsubscribe('key');
 </RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-web-components">
+
 ```ts
 const { stores } = meeting.stores;
 const store = stores.get('myStore');
-store.subscribe('key', (data) => { 
+store.subscribe('key', (data) => {
     console.log(data);
 });
 
@@ -180,7 +176,6 @@ console.log(data);
 });
 
 store.unsubscribe('key');
-
 ````
 
 </RTKCodeSnippet>
@@ -190,6 +185,7 @@ store.unsubscribe('key');
 You can fetch the data stored in the store:
 
 <RTKCodeSnippet id="web-react">
+
 ```ts
 const stores = useRealtimeKitSelector((m) => m.stores.stores);
 const store = stores.get('myStore');
@@ -204,6 +200,7 @@ const data = store.getAll();
 </RTKCodeSnippet>
 
 <RTKCodeSnippet id="web-angular">
+
 ```ts
 const { stores } = meeting.stores;
 const store = stores.get('myStore');
@@ -220,6 +217,7 @@ const data = store.getAll();
 
 
 <RTKCodeSnippet id="web-web-components">
+
 ```ts
 const { stores } = meeting.stores;
 const store = stores.get('myStore');
